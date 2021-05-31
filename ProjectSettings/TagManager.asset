@@ -70,6 +70,7 @@ TagManager:
   - Bear-icade
   - VFX_Enemy
   - VFX_Bjorn
+  - Cannon
   layers:
   - Default
   - TransparentFX
