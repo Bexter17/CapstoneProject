@@ -7,7 +7,7 @@ public class Balloon_Enemy : MonoBehaviour
     public ParticleSystem balloonPopParticles;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Balloon"))
+        if (collision.collider.CompareTag("PlayerRanged"))
         {
             Destroy();
         }

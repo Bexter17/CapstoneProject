@@ -42,10 +42,10 @@ public class Cannon_Controller : MonoBehaviour
         {
             if (hit.transform.gameObject.tag == "Cannon")
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
-                    xDegrees -= Input.GetAxis("Mouse Y") * speed * friction;
-                    yDegrees -= Input.GetAxis("Mouse X") * speed * friction;
+                    xDegrees -= Input.GetAxis("R") * speed * friction;
+                    yDegrees -= Input.GetAxis("R") * speed * friction;
                     fromRotation = transform.rotation;
                     toRoatation = Quaternion.Euler(xDegrees, yDegrees, 0);
                     transform.rotation = Quaternion.Lerp(fromRotation, toRoatation, Time.deltaTime * lerpSpeed);
@@ -53,7 +53,7 @@ public class Cannon_Controller : MonoBehaviour
             }
         }
         
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             FireCannon();
         }

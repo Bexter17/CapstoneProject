@@ -1456,7 +1456,7 @@ public class CharacterMechanics : MonoBehaviour
 
                     GameObject bullet = Instantiate(RangePrefab, RangedSpawn.transform.position, RangedSpawn.transform.rotation) as GameObject;
                     //bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);  Original Code for our old balloon projectile
-                    bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 3000);
+                    bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 5000);
 
                     Destroy(bullet, 2);
                 }
