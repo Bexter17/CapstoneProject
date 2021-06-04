@@ -11,6 +11,16 @@ public class Balloon_Enemy : MonoBehaviour
         {
             Destroy();
         }
+
+        if (collision.collider.CompareTag("WhirlwindAOE"))
+        {
+            Destroy();
+        }
+        
+        if (collision.collider.CompareTag("HammerSmashAOE"))
+        {
+            Destroy();
+        }
     }
 
     public void Destroy()
