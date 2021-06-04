@@ -131,7 +131,7 @@ MonoBehaviour:
     type: 3}
   pickUps:
   - {fileID: 8462015923751488799, guid: 4999fa34e3666cc4288089660f842462, type: 3}
-  - {fileID: 7743928427607976405, guid: e2a10996a6520c24990b33ee122bb605, type: 3}
+  - {fileID: 7743928427607976405, guid: 3feb6bbcd1f3abc49b7863b8ca3a1c78, type: 3}
   - {fileID: 7433836673992892121, guid: 06a6d602e7141d8479eff27c9e9c3ad9, type: 3}
   - {fileID: 4107037681036373853, guid: 1e721a0221bd0f44cb63367d8c0f26b7, type: 3}
   index: 0

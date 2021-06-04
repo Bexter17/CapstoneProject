@@ -59,7 +59,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7090696
+      - time: 0.11822658
+        functionName: setDashReady
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e7ecef23217700d469db0f2e1f364179,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7928135
         functionName: dashEnds
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e7ecef23217700d469db0f2e1f364179,

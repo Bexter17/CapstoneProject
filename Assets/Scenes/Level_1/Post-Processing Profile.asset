@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
 --- !u!114 &-8335420733219636173
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.69
   contrast:
     m_OverrideState: 1
     m_Value: 0

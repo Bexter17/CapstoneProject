@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: hairlow
-  m_Shader: {fileID: -6465566751694194690, guid: ff2dfd4f510383343b6bf6737896b19f,
+  m_Shader: {fileID: -6465566751694194690, guid: 2622c904f93f9404c96ec279aa36382a,
     type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4

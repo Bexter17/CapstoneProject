@@ -167,13 +167,18 @@ public class AnimController : MonoBehaviour
 
     private void LateUpdate()
     {
-        /*
+        
         if (animName != "HammerCharge")
         {
-            if(cm.dashTemp)
-            cm.dashEnds();
+            if (cm.dashTemp && cm.dashReady)
+            {
+                cm.dashEnds();
+
+                Debug.LogError("dashTemp destroyed due to animState!");
+                Debug.Log("animState = " + animName);
+            }
         }
-        */
+        
     }
 
     public void Die()
@@ -183,7 +188,7 @@ public class AnimController : MonoBehaviour
 
     public void attackEnd()
     {
-        Debug.LogError("Triggers Reset!");
+        Debug.Log("Triggers Reset!");
 
         animator.ResetTrigger("Attack");
 
@@ -332,4 +337,9 @@ public class AnimController : MonoBehaviour
         animator.SetInteger("Counter", 0);
     }
 
+    #region On Anim State Enter
+
+    
+
+    #endregion
 }

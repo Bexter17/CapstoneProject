@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  WeaponScript: {fileID: 78181892169574481}
   hp: 60
   death: 0
   ragdoll: {fileID: 5875220092916251491, guid: d5e4355e41ed00b489d39d64e8dca8ad, type: 3}
@@ -201,7 +202,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 0.9}
+  m_Size: {x: 0.8, y: 2, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &5089963695992451893
 MonoBehaviour:
@@ -223,15 +224,11 @@ MonoBehaviour:
   - {fileID: 2358005025021046957}
   - {fileID: 6983608213754651798}
   - {fileID: 3324711144680256833}
+  spawnIn: 0
+  despawn: 0
   fade: 1.9
-  speed: 10
-  spawnSpeedDivider: 2.2
-  deathSpeedDivider: 1
   spawnFrom: {fileID: 4781155242266995972}
-  spawnSand: {fileID: 8468632872640077945, guid: 91772983021accc4b92375d3a79b0425,
-    type: 3}
-  deathSand: {fileID: 6484933765938758908, guid: b61e817d1960a514bbcc9280be9139e9,
-    type: 3}
+  enemyVFXData: {fileID: 11400000, guid: da07ff97f5d4c4749aad0f589227d5db, type: 2}
 --- !u!1 &2556458649338573558
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +499,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &2682768022287367677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011630628843956451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2, z: 0.6}
+  m_Center: {x: 0.0000019132176, y: -0.0000010839233, z: 0.13443165}
+--- !u!114 &78181892169574481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011630628843956451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1beed347667f5ad469ecaad8984e3c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7916837102094452377
 Animator:
   serializedVersion: 3
@@ -599,6 +621,12 @@ GameObject:
 --- !u!4 &7617809562064238241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c90db3acde00ed40bfb7d446830bd3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7943606554154291530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7011630628843956451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8110124233672427095, guid: 2c90db3acde00ed40bfb7d446830bd3f,
     type: 3}
   m_PrefabInstance: {fileID: 7943606554154291530}
   m_PrefabAsset: {fileID: 0}

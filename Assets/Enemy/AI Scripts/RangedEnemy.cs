@@ -6,7 +6,8 @@ using UnityEngine.AI;
 
 public class RangedEnemy : MonoBehaviour
 {
-    //May 5, 2021
+    //June 2, 2021
+    //Most Recent Change: added trigger box that is only enabled during player abilities for basic attack spam damage bug / hammersmashaoe doing damage
     #region Variables
 
     [Header("Essentials")]
@@ -14,6 +15,7 @@ public class RangedEnemy : MonoBehaviour
     public int hp = 5;
     private int maxHP;
     private Image hpBar;
+    [SerializeField] private BoxCollider abilityCollider;
 
     public Rigidbody rb;
     public Transform target;
@@ -52,6 +54,10 @@ public class RangedEnemy : MonoBehaviour
     // The player that the enemy will chase
     //public Vector3 initialPos;
     //bool isInitPos = true;
+
+    private int basicStaggerCounter = 0;
+    //1 / attackStaggerCount of basic attacks stagger
+    private int attackStaggerCount = 4;
 
     IEnumerator Stun()
     {
@@ -162,6 +168,20 @@ public class RangedEnemy : MonoBehaviour
         #region AI States
         if (agent.enabled)
         {
+
+            if(myEnemyClown == EnemyState.Chase || myEnemyClown == EnemyState.Attack)
+            {
+                //To ensure spam basic attack damage bug isn't happening / hammersmashaoe works
+                if (cm.isUsingAbilities)
+                {
+                    //Debug.Log("Big Bear using abilities");
+                    abilityCollider.enabled = true;
+                }
+                else
+                {
+                    abilityCollider.enabled = false;
+                }
+            }
             Vector3 targetPosition = agent.destination;
             targetPosition.y = transform.position.y;
 
@@ -183,14 +203,14 @@ public class RangedEnemy : MonoBehaviour
                 else
                 {
                     eAnim.SetBool("PlayerSpotted", true);
-                    if (Vector3.Distance(target.position, gameObject.transform.position) > attackRange)
-                    {
-                        myEnemyClown = EnemyState.Chase;
-                        Chase();
-                        //Debug.LogWarning("");
+                    //if (Vector3.Distance(target.position, gameObject.transform.position) < attackRange)
+                    //{
+                    //    myEnemyClown = EnemyState.Chase;
+                    //    Chase();
+                    //    //Debug.LogWarning("");
 
-                    }
-                    else if (Vector3.Distance(target.position, gameObject.transform.position) <= attackRange)
+                        //}
+/*                    else */if (Vector3.Distance(target.position, gameObject.transform.position) <= attackRange)
                     {
                         eAnim.SetBool("Chase", false);
                         agent.isStopped = true;
@@ -203,13 +223,14 @@ public class RangedEnemy : MonoBehaviour
             else
             {
                 rb.isKinematic = true;
-                if (Vector3.Distance(target.position, gameObject.transform.position) <= attackRange)
+                if (Vector3.Distance(Player.transform.position, gameObject.transform.position) <= attackRange)
                 {
                     eAnim.SetBool("Chase", false);
                     agent.isStopped = true;
                     //Sets Destination to player so that the enemy will turn towards player
                     //Will not move is agent.isStopped = true
-                    agent.SetDestination(Player.transform.position);
+                    //agent.SetDestination(Player.transform.position);
+                    targetPosition = Player.transform.position;
                     myEnemyClown = EnemyState.Attack;
                     Attack();
                 }
@@ -299,6 +320,7 @@ public class RangedEnemy : MonoBehaviour
 
             if (rb)
             {
+                AnimStagger();
                 Vector3 direction = transform.position - collision.transform.position;
                 direction.y = 0;
 
@@ -332,6 +354,13 @@ public class RangedEnemy : MonoBehaviour
 
                 if (rb)
                 {
+                    basicStaggerCounter++;
+                    if(basicStaggerCounter >= attackStaggerCount)
+                    {
+                        basicStaggerCounter = 0;
+                        AnimStagger();
+                    }
+                    
                     Vector3 direction = transform.position - collision.transform.position;
                     direction.y = 0;
 
@@ -356,6 +385,7 @@ public class RangedEnemy : MonoBehaviour
 
                 if (rb)
                 {
+                    AnimStagger();
                     Vector3 direction = transform.position - collision.transform.position;
                     direction.y = 0;
 
@@ -381,6 +411,7 @@ public class RangedEnemy : MonoBehaviour
 
             if (rb)
             {
+                AnimStagger();
                 Vector3 direction = transform.position - collision.transform.position;
                 direction.y = 0;
 
@@ -393,7 +424,6 @@ public class RangedEnemy : MonoBehaviour
             }
         }
     }
-
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("HammerSmashAOE"))
@@ -404,6 +434,11 @@ public class RangedEnemy : MonoBehaviour
             //Give enemies back their speed after hammer smash AOE
             //enemyMovement = 5;
         }
+    }
+
+    private void AnimStagger()
+    {
+        eAnim.SetTrigger("staggerBack");
     }
 
    
@@ -430,13 +465,21 @@ public class RangedEnemy : MonoBehaviour
     //Ranged Attack 
     private void Attack()
     {
-        RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit);
+        //Two raycasts to ensure clown will attack even if its not at equal height as player
+        RaycastHit highHit;
+        RaycastHit lowHit;
+        Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.TransformDirection(Vector3.forward), out lowHit);
+        Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.TransformDirection(Vector3.forward), out highHit);
 
-        if (Time.time - attackTimer > 1.0f && hit.collider.tag == "Player")
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.TransformDirection(Vector3.forward) * 20);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.TransformDirection(Vector3.forward) * 20);
+        if (Time.time - attackTimer > 1.0f)
         {
-            eAnim.SetTrigger("Attack");
-            attackTimer = Time.time;
+            if(lowHit.collider.tag == "Player" || highHit.collider.tag == "Player")
+            {
+                eAnim.SetTrigger("Attack");
+                attackTimer = Time.time;
+            }
         }
     }
 
@@ -445,7 +488,7 @@ public class RangedEnemy : MonoBehaviour
     {
         Debug.LogWarning("Clown Ontrigger");
         // During patrol alternate going between Waypoint1 and Waypoint2
-        // On colliding with waypoint sets other as destination
+        // On collision with waypoint sets other as destination
         if (myEnemyClown == EnemyState.Patrol)
         {
             if (other.CompareTag("WayPoint1"))
@@ -461,15 +504,40 @@ public class RangedEnemy : MonoBehaviour
         if (other.gameObject.tag == "PlayerRanged")
         {
             Debug.Log("Hit with Ranged");
-            takeDamage(1);
+            takeDamage(8);
         }
+        if (other.gameObject.CompareTag("HammerSmashAOE"))
+        {
+            #region Debug Log
+            Debug.Log("Ranged enemy has been hit by hammer smash!");
+            #endregion
 
+            rb.velocity = Vector3.zero;
+            //Stop attacking
+            takeDamage(35);
+            StartCoroutine(Stun());
+
+            if (rb)
+            {
+                AnimStagger();
+                Vector3 direction = transform.position - other.transform.position;
+                direction.y = 0;
+
+                rb.AddForce(direction.normalized * smashKnockbackForce, ForceMode.Impulse);
+            }
+
+            if (combatDebug)
+            {
+                Debug.Log(this.transform.name + " Knocked Back!");
+            }
+        }
         if (other.CompareTag("Hammer2"))
         {
             if (cm.isAttacking)
             {
                 takeDamage(2);
             }
+            
 
             if (cm.isSpinning)
             {

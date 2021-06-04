@@ -235,7 +235,7 @@ public class CharacterMechanics : MonoBehaviour
 
     #region Abilities
 
-    bool isUsingAbilities;
+    public bool isUsingAbilities;
 
     [SerializeField] public GameObject abilitySpawn;
 
@@ -254,6 +254,8 @@ public class CharacterMechanics : MonoBehaviour
     //[SerializeField] private Vector3 dashOffset = new Vector3(0.0f, 0.0f, 1.0f);
 
     public GameObject dashTemp = null;
+
+    public bool dashReady;
 
     #endregion
 
@@ -499,8 +501,8 @@ public class CharacterMechanics : MonoBehaviour
             }
             else
             {
-                if(SceneManager.GetActiveScene().name == "Level_1")
-                respawnPoint = GameManager.Instance.GetCurrentCheckpoint();
+                if (SceneManager.GetActiveScene().name == "Level_1")
+                    respawnPoint = GameManager.Instance.GetCurrentCheckpoint();
             }
 
 
@@ -861,7 +863,7 @@ public class CharacterMechanics : MonoBehaviour
 
         comboCount = 1;
 
-        
+
         //am.PlayNewSound("Swing_01_WithReverb", false, false, null);
 
         isAttacking = true;
@@ -906,8 +908,8 @@ public class CharacterMechanics : MonoBehaviour
 
         comboCount = 2;
 
-        
-       // am.PlayNewSound("Swing_02_with Reverb", false, false, null);
+
+        // am.PlayNewSound("Swing_02_with Reverb", false, false, null);
 
         isAttacking = true;
         //cameraShakeTemp2 = Instantiate(cameraShake2Prefab, transform.position, hammerSmashSpawn.transform.rotation, gameObject.transform);
@@ -950,7 +952,7 @@ public class CharacterMechanics : MonoBehaviour
 
         comboCount = 3;
 
-        
+
         //am.PlayNewSound("Swing_03_With Reverb", false, false, null);
 
         isAttacking = true;
@@ -1078,7 +1080,7 @@ public class CharacterMechanics : MonoBehaviour
 
         if (ib)
             ib.tryBufferedAction();
-        
+
         //comboCount = 0;
 
         //animator.SetInteger("Counter", comboCount);
@@ -1144,9 +1146,9 @@ public class CharacterMechanics : MonoBehaviour
     }
 
     public void firstAttackSFX()
-    {             
-        
-        am.PlayNewSound("Swing_01_WithReverb", false, false, null);       
+    {
+
+        am.PlayNewSound("Swing_01_WithReverb", false, false, null);
     }
 
     public void secondAttackSFX()
@@ -1178,25 +1180,17 @@ public class CharacterMechanics : MonoBehaviour
         {
             if (ib.actionAllowed)
             {
+                dashReady = false;
+
+                ac.dash();
+
                 isUsingAbilities = true;
 
                 ac.setAbilities(isUsingAbilities);
 
                 comboCount = 0;
 
-                if (dashRangePrefab && abilitySpawn)
-                {
-                    dashTemp = Instantiate(dashRangePrefab, abilitySpawn.transform.position, abilitySpawn.transform.rotation, abilitySpawn.transform);
-                    //if(combatDebug)
-                   // Debug.LogError("Dash Zone created!");
-                }
-
-                else
-                    Debug.LogError("Missing Object reference" + "dashRangePrefab: " + dashRangePrefab + "abilitySpawn: " + abilitySpawn);
-
                 ic.dash();
-
-                ac.dash();
 
                 abilities.activateAbility1();
 
@@ -1208,6 +1202,24 @@ public class CharacterMechanics : MonoBehaviour
                 Debug.Log("action not allowed");
             }
         }
+    }
+
+    public void createDashTemp()
+    {
+        if (dashRangePrefab && abilitySpawn)
+        {
+            dashTemp = Instantiate(dashRangePrefab, abilitySpawn.transform.position, abilitySpawn.transform.rotation, abilitySpawn.transform);
+            //if(combatDebug)
+            Debug.LogError("Dash Zone created!");
+        }
+
+        else
+            Debug.LogError("Missing Object reference" + "dashRangePrefab: " + dashRangePrefab + "abilitySpawn: " + abilitySpawn);
+    }
+
+    public void setDashReady()
+    {
+        dashReady = true;
     }
 
     public void dashEnds()
@@ -1222,6 +1234,8 @@ public class CharacterMechanics : MonoBehaviour
         #endregion
 
         isUsingAbilities = false;
+
+        dashReady = false;
 
         ac.setAbilities(isUsingAbilities);
 

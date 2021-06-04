@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b1590255d8866408b7d294afbe42d8, type: 3}
+  m_Name: ClownEnemyVFX
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: cd3de2e08e5401748996e1345bacc0b2, type: 2}
+  isDissolvingIn: 0
+  isDissolvingOut: 0
+  spawnSandPS: 0
+  deathSandPS: 0
+  spawnIn: 0
+  despawn: 0
+  fade: 1.9
+  spawnSand: {fileID: 8468632872640077945, guid: 91772983021accc4b92375d3a79b0425,
+    type: 3}
+  deathSand: {fileID: 6484933765938758908, guid: b61e817d1960a514bbcc9280be9139e9,
+    type: 3}

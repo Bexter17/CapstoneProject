@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  WeaponScript: {fileID: 1705300818196718815}
   hp: 60
   death: 0
   ragdoll: {fileID: 8786828237761459615, guid: f167abdd0a8399449bed2b321dd2c5e9, type: 3}
@@ -201,7 +202,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 0.9}
+  m_Size: {x: 0.8, y: 2, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &8358036180218261660
 MonoBehaviour:
@@ -223,15 +224,11 @@ MonoBehaviour:
   - {fileID: 4625964680522711645}
   - {fileID: 4411960438377448710}
   - {fileID: 7894467701415788115}
+  spawnIn: 0
+  despawn: 0
   fade: 1.9
-  speed: 10
-  spawnSpeedDivider: 2.2
-  deathSpeedDivider: 1
   spawnFrom: {fileID: 4028209344662936737}
-  spawnSand: {fileID: 8468632872640077945, guid: 91772983021accc4b92375d3a79b0425,
-    type: 3}
-  deathSand: {fileID: 6484933765938758908, guid: b61e817d1960a514bbcc9280be9139e9,
-    type: 3}
+  enemyVFXData: {fileID: 11400000, guid: da07ff97f5d4c4749aad0f589227d5db, type: 2}
 --- !u!1 &2556458649338573558
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +499,83 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &4093051345768127342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894467701415788115}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.4}
+  m_Center: {x: 0, y: 0, z: -0.0000009536743}
+--- !u!114 &1705300818196718815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894467701415788115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1beed347667f5ad469ecaad8984e3c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!137 &530818425204247291
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7894467701415788115}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7de041a792a050a42a3fbcfa2511db17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 6859652614025988228, guid: ab5e4567c5928964e9e96f0f604051fb, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.0446312, y: 0.0446312, z: 0.13105568}
+  m_DirtyAABB: 0
 --- !u!1001 &7195703755308420809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -569,7 +643,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carny@Character
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -728433891427728011, guid: ab5e4567c5928964e9e96f0f604051fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ab5e4567c5928964e9e96f0f604051fb, type: 3}
 --- !u!4 &7230246685684214050 stripped
 Transform:

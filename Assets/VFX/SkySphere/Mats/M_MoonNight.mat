@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_MoonNight
-  m_Shader: {fileID: -6465566751694194690, guid: d23f986a10ba9d0489c0258070d03ccb, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d23f986a10ba9d0489c0258070d03ccb,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -41,7 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_17AFD7DF: 0.084
-    - Vector1_1B591811: 0.87
+    - Vector1_1B591811: 1.1
     - Vector1_26F5D02C: 0.276
     - Vector1_3C7E26F: 0.8
     - Vector1_3E41FF2E: 1
@@ -63,7 +64,7 @@ Material:
     - Vector1_CE980FE4: -1000
     - Vector1_D94F9C6E: 10
     - Vector1_DB8CBDBC: 0.113
-    - Vector1_F5DF4B1C: 0.7
+    - Vector1_F5DF4B1C: 1.1
     m_Colors:
     - Color_4918EAC5: {r: 0.7169812, g: 0.7068352, b: 0.7068352, a: 0}
     - Color_4D8CDCD9: {r: 0.8490566, g: 0.75120664, b: 0.5727127, a: 0}

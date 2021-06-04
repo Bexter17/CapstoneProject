@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 6845188008510120403}
   - component: {fileID: 6845188007653863305}
   - component: {fileID: -1176448609775156762}
-  - component: {fileID: 3221100409311719016}
   - component: {fileID: 7307934235607070733}
+  - component: {fileID: 531000808880827379}
   m_Layer: 0
   m_Name: ClownEnemy
   m_TagString: Enemy
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 50
+  abilityCollider: {fileID: 531000808880827379}
   rb: {fileID: 942041078614932}
   target: {fileID: 1016093913191264029, guid: 08256832e9e5191459197d45907b0cd7, type: 3}
   ragdoll: {fileID: 8484000190902902763, guid: 584b966fa9aecab4fbb92be452e8855f, type: 3}
@@ -201,19 +202,6 @@ MonoBehaviour:
   isStationary: 0
   waypoint1: {fileID: 0}
   waypoint2: {fileID: 0}
---- !u!65 &3221100409311719016
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942041078614933}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 0.9}
-  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &7307934235607070733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,15 +222,24 @@ MonoBehaviour:
   - {fileID: 4973858719778585166}
   - {fileID: 8284839520774340216}
   - {fileID: 6190494914886604491}
+  spawnIn: 0
+  despawn: 0
   fade: 1.9
-  speed: 10
-  spawnSpeedDivider: 2.2
-  deathSpeedDivider: 1
   spawnFrom: {fileID: 5753304001839329571}
-  spawnSand: {fileID: 8468632872640077945, guid: 91772983021accc4b92375d3a79b0425,
-    type: 3}
-  deathSand: {fileID: 6484933765938758908, guid: b61e817d1960a514bbcc9280be9139e9,
-    type: 3}
+  enemyVFXData: {fileID: 11400000, guid: da07ff97f5d4c4749aad0f589227d5db, type: 2}
+--- !u!65 &531000808880827379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942041078614933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7686237186088107772
 GameObject:
   m_ObjectHideFlags: 0

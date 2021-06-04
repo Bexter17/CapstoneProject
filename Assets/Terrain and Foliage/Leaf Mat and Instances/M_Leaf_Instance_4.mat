@@ -12,7 +12,7 @@ Material:
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -84,7 +84,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_1040095A: {r: 0.8773585, g: 0.70002484, b: 0.1779548, a: 0}
-    - Color_C5C517D3: {r: 0.7924528, g: 0.53702384, b: 0.02616591, a: 0}
+    - Color_C5C517D3: {r: 0.7921569, g: 0.1979618, b: 0.027450996, a: 0}
     - Vector2_5038CD13: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

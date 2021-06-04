@@ -4858,15 +4858,11 @@ MonoBehaviour:
   - {fileID: 5310523023704166977}
   - {fileID: 6259581567278810202}
   - {fileID: 3158805371764818689}
+  spawnIn: 0
+  despawn: 0
   fade: -13
-  speed: 10
-  spawnSpeedDivider: 2.2
-  deathSpeedDivider: 1
   spawnFrom: {fileID: 2381041999168461478}
-  spawnSand: {fileID: 8468632872640077945, guid: 91772983021accc4b92375d3a79b0425,
-    type: 3}
-  deathSand: {fileID: 6484933765938758908, guid: b61e817d1960a514bbcc9280be9139e9,
-    type: 3}
+  enemyVFXData: {fileID: 11400000, guid: da07ff97f5d4c4749aad0f589227d5db, type: 2}
 --- !u!1 &9074372309960672340
 GameObject:
   m_ObjectHideFlags: 0

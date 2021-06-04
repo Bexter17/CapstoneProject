@@ -39,6 +39,10 @@ public class InputControl : MonoBehaviour
 
     #region Movement
 
+    [SerializeField] bool invertX;
+
+    [SerializeField] bool invertY;
+
     //Determines how fast the character moves
     [SerializeField] private float movementSpeed;
 
@@ -479,9 +483,17 @@ public class InputControl : MonoBehaviour
 
     void CamControl()
     {
-        mouseX += mouseVec.x;// * HorizontalRotationSpeed;
+        if(!invertX)
+        mouseX += mouseVec.x;
 
-        mouseY -= mouseVec.y;// * VerticalRotationSpeed;
+        else
+            mouseX += -mouseVec.x;
+
+        if (!invertY)
+            mouseY -= mouseVec.y;
+
+        else
+            mouseY -= -mouseVec.y;
 
         mouseY = Mathf.Clamp(mouseY, -35, 60);
 
@@ -1149,6 +1161,8 @@ public class InputControl : MonoBehaviour
 
         zPosition = 0;
 
+        cm.createDashTemp();
+
         //zPosition = initPositionZ + (((initVelocityZ * velocityReducer * accelerationTime * 0.1f) + (0.5F * (dashAcceleration * accelerationReducer) * (accelerationTime * accelerationTime)) * 0.5f * 0.5f) * 0.1f);
         
        // zPosition = initPositionZ + ((initVelocityZ * velocityReducer) + (0.5f * (dashAcceleration * accelerationReducer) * 0.5f) * 0.0001f);
@@ -1415,4 +1429,40 @@ public class InputControl : MonoBehaviour
 
         cm.dashEnds();
     }
+
+    #region Look Inversion
+
+    public void OnInvertY()
+    {
+        toggleCameraY();
+    }
+
+    public void OnInvertX()
+    {
+        toggleCameraX();
+    }
+
+
+    public bool toggleCameraY()
+    {
+        if (invertY)
+            invertY = false;
+        else
+            invertY = true;
+
+        return invertY;
+
+    }
+
+    public bool toggleCameraX()
+    {
+        if (invertX)
+            invertX = false;
+        else
+            invertX = true;
+
+        return invertX;
+    }
+
+    #endregion 
 }

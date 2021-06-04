@@ -15,6 +15,7 @@ public class VFXenemies : MonoBehaviour
 
     //Array to store all the materials that need the dissolve triggered
     Material[] material;
+    SkinnedMeshRenderer[] skinnedMeshes;
 
     //Trigger states for Dissolving
     bool isDissolvingIn = false;
@@ -32,23 +33,29 @@ public class VFXenemies : MonoBehaviour
     public float fade = 1.9f;
 
     [Header("Speed of Dissolve", order = 2)]
-    public float speed = 10;
-    public float spawnSpeedDivider = 2.2f;
-    public float deathSpeedDivider = 1;
+    float speed = 10;
+    float spawnSpeedDivider = 2.2f;
+    float deathSpeedDivider = 2;
 
     [Header("Enemy VFX Transform", order = 3)]
     public GameObject spawnFrom;
     Vector3 deathFrom = new Vector3(0, 1, 0);
 
-    [Header("Enemy VFX Prefabs", order = 4)]
-    public GameObject spawnSand;
-    public GameObject deathSand;
+    [Header("VFX Data", order = 4)]
+    public  VFXAssetEnemy enemyVFXData;
+
+    GameObject spawnSand;
+    GameObject deathSand;
     #endregion
 
     void Start()
     {
         //Grabs the materials component so their values can be changed when the function is called
         getMaterials();
+        getSkinnedMeshs();
+        
+        spawnSand = enemyVFXData.spawnSand;
+        deathSand = enemyVFXData.deathSand;
     }
 
     void Update()
@@ -56,7 +63,7 @@ public class VFXenemies : MonoBehaviour
         //Gets the time variable
         GetTime();
 
-        if(spawnIn)
+        if (spawnIn)
         {
             DissolveIn();
         }
@@ -68,15 +75,8 @@ public class VFXenemies : MonoBehaviour
     }
 
     #region Functions
-    public void getMaterials()
-    {
-        material = new Material[objectsToDissolve];
 
-        for (int index = 0; index < objectsToDissolve; index++)
-        {
-            material[index] = ObjectsDissolving[index].GetComponent<Renderer>().material;
-        }
-    }
+    #region VFX Functions
 
     /* Function Name: DissolveIn
     * Use: Gathers every material and dissolves the material of the enemy in; also calls the particle system
@@ -158,14 +158,64 @@ public class VFXenemies : MonoBehaviour
      * Input: Takes a boolean value on if the enemy is dead or not.
      * Output: No Output
      */
-    void SpawnSand(bool isDead)
+    void SpawnSand(bool isDead) 
     {
         if (!isDead)
         {
-            Instantiate(spawnSand, spawnFrom.transform.position, spawnFrom.transform.rotation, spawnFrom.transform);
-        } else if (isDead)
+            //Instantiate(spawnSand, spawnFrom.transform.position, spawnFrom.transform.rotation, spawnFrom.transform);
+            for (int index = 0; index < objectsToDissolve; index++)
+            {
+                GameObject sand;
+                ParticleSystem ps;
+
+                sand = Instantiate(spawnSand, skinnedMeshes[index].transform.position, skinnedMeshes[index].transform.rotation, skinnedMeshes[index].transform);
+                ps = sand.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+                var psShape = ps.shape;
+                psShape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+
+                psShape.skinnedMeshRenderer = skinnedMeshes[index];
+            }
+        }
+        else if (isDead)
         {
-            Instantiate(deathSand, spawnFrom.transform.position + deathFrom, spawnFrom.transform.rotation, spawnFrom.transform);
+            /*Instantiate(deathSand, spawnFrom.transform.position + deathFrom, spawnFrom.transform.rotation, spawnFrom.transform);*/
+            for (int index = 0; index < objectsToDissolve; index++)
+            {
+                GameObject sand;
+                ParticleSystem ps;
+
+                sand = Instantiate(deathSand, skinnedMeshes[index].transform.position + deathFrom, skinnedMeshes[index].transform.rotation, skinnedMeshes[index].transform);
+                ps = sand.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+                var psShape = ps.shape;
+                psShape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+
+                psShape.skinnedMeshRenderer = skinnedMeshes[index];
+            }
+        }
+    }
+
+    #endregion
+
+    #region Handler Functions
+    public void getMaterials()
+    {
+        material = new Material[objectsToDissolve];
+
+        for (int index = 0; index < objectsToDissolve; index++)
+        {
+            material[index] = ObjectsDissolving[index].GetComponent<Renderer>().material;
+        }
+    }
+
+    public void getSkinnedMeshs()
+    {
+        skinnedMeshes = new SkinnedMeshRenderer[objectsToDissolve];
+
+        for (int index = 0; index < objectsToDissolve; index++)
+        {
+            skinnedMeshes[index] = ObjectsDissolving[index].GetComponent<SkinnedMeshRenderer>();
         }
     }
 
@@ -190,7 +240,7 @@ public class VFXenemies : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < vfxToDestroy.Length; i++)
+        for (int i = 0; i < vfxToDestroy.Length; i++)
         {
             Destroy(vfxToDestroy[i], vfxDuration + 5f);
         }
@@ -217,13 +267,15 @@ public class VFXenemies : MonoBehaviour
     {
         ParticleSystem[] vfxPS = new ParticleSystem[vfxList.Length];
 
-       for(int i = 0; i < vfxList.Length; i++)
+        for (int i = 0; i < vfxList.Length; i++)
         {
             vfxPS[i] = vfxList[i].GetComponent<ParticleSystem>();
         }
 
         return vfxPS;
     }
+
+    #endregion
 
     #endregion
 }

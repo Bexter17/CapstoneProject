@@ -51925,7 +51925,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.33333334
-    functionName: HammerTrail
+    functionName: HammerTrailSmash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.93333334
+    functionName: HammerSmash
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -51935,7 +51942,7 @@ AnimationClip:
     functionName: DestroyVFX
     data: VFX_Hammer_Trail(Clone)
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 3
     intParameter: 0
     messageOptions: 0
   - time: 1.1250659

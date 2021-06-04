@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Leaf_Instance_2
-  m_Shader: {fileID: -6465566751694194690, guid: 8c2790d6d2101ab488af8819e06b70c1, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8c2790d6d2101ab488af8819e06b70c1,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -61,8 +62,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_21D0A341: 0.5
-    - Vector1_E5EAB947: 1
-    - Vector1_ED16744C: 4
+    - Vector1_E5EAB947: 0.9
+    - Vector1_ED16744C: 2.99
     - Vector1_ED2229AB: 6.34
     - _AlphaClip: 0
     - _Blend: 0
@@ -88,7 +89,7 @@ Material:
     m_Colors:
     - Color_1040095A: {r: 1, g: 0.8564266, b: 0, a: 0}
     - Color_C5C517D3: {r: 1, g: 0, b: 0, a: 0}
-    - Vector2_5038CD13: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_5038CD13: {r: 0.5, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

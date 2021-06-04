@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_PortalFix
+  m_Shader: {fileID: -6465566751694194690, guid: 096032f73252ab84688716d063670793,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_165C6B90:
+        m_Texture: {fileID: 2800000, guid: e140fe8f69370aa4ca32dfa51791b676, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_DA5296DA:
+        m_Texture: {fileID: 2800000, guid: dbed29e1f945df94e9cdee1db679f223, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_8824ECCC: -4
+    - Vector1_D56AB6CA: -2
+    m_Colors:
+    - Color_9C6FADD0: {r: 0.45283014, g: 0.34115416, b: 0.20291916, a: 0}
+    - Color_FAFE12CC: {r: 0.5471698, g: 0.49770084, b: 0.48780704, a: 0}
+  m_BuildTextureStacks: []

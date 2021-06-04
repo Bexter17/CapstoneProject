@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737d5dcfe5befef44bb5dacc662ff522, type: 3}
+  m_Name: BjornVFX
+  m_EditorClassIdentifier: 
+  hammerTrailDefault: {fileID: 3538764934017939424, guid: a5292b3c1bc34fd47a4f4322403ba064,
+    type: 3}
+  hammerTrailSmash: {fileID: 4722903869081051432, guid: 67239e39df575e043bf02fd606d0fcec,
+    type: 3}
+  abilityTrail: {fileID: 991300049335897849, guid: 1743e8f64dfbada43b5a63ffaa2be4cd,
+    type: 3}
+  tripleAttackFirst: {fileID: 348652569958047850, guid: ac37a075ae8de7e4b9e334c98b2368c2,
+    type: 3}
+  tripleAttackSecond: {fileID: 4851956016851255289, guid: 5dfa2250b4c058349a9c056476140c0a,
+    type: 3}
+  tripleAttackThird: {fileID: 755201581105872065, guid: 689b0a14cd410c548ae217083e7e04a7,
+    type: 3}
+  hammerCharge: {fileID: 5728695581257635361, guid: 846b93b8bf33eee4ebc8aae60b056f76,
+    type: 3}
+  hammerSpin: {fileID: 2069840039932908622, guid: 1de54abad75cb2648b56df5f4ac684f3,
+    type: 3}
+  hammerSmash: {fileID: 1534127008299542147, guid: 53c196ca1b08dc143a4de0e1e1bf3dcb,
+    type: 3}
+  throwAxe: {fileID: 0}
+  bjornDeath: {fileID: 0}
+  takeDamage: {fileID: 7775005493793751106, guid: 3d1c8e27b83c16e499fe8a88df07ad24,
+    type: 3}
