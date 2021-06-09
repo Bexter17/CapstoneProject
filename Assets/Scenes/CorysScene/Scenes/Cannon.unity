@@ -584,6 +584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6395177624349425602, guid: 8b156989ee11c674a83fb36cc99d52eb,
+        type: 3}
+      propertyPath: explosionRadius
+      value: 7.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6885081792916543491, guid: 8b156989ee11c674a83fb36cc99d52eb,
         type: 3}
       propertyPath: m_Name
