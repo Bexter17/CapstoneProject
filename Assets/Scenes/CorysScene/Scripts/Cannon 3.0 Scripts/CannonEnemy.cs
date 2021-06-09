@@ -86,7 +86,7 @@ public class CannonEnemy : MonoBehaviour
     void Shoot()
     {
         GameObject cannonProjectileGO = (GameObject)Instantiate(cannonBallPrefab, firePoint.position, firePoint.rotation);
-        CannonBall cannonProjectile = cannonProjectileGO.GetComponent<CannonBall>();
+        CannonProjectile cannonProjectile = cannonProjectileGO.GetComponent<CannonProjectile>();
 
         if (cannonProjectile != null)
             cannonProjectile.Seek(target);

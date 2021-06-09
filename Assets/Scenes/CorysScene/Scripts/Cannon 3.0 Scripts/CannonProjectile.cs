@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonProjectile : MonoBehaviour
 {
     private Transform target;
 
-    public float speed = 70f;
+    public float speed = 5f;
     public GameObject impactEffect;
 
     public void Seek(Transform _target)
@@ -33,12 +34,12 @@ public class CannonProjectile : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
     }
-    
 
-    void HitTarget ()
+
+    void HitTarget()
     {
-       GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
+        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 5f);
 
 
         Destroy(gameObject);
