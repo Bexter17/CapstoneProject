@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon_Ball : MonoBehaviour
+public class CannonBall : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +15,10 @@ public class Cannon_Ball : MonoBehaviour
     void Update()
     {
         
+    }
+
+    internal void Seek(Transform target)
+    {
+        throw new NotImplementedException();
     }
 }
