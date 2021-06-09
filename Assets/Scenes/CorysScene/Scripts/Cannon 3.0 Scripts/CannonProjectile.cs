@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CannonProjectile : MonoBehaviour
 {
     private Transform target;
+    public float explosionRadius = 0f;
 
     public float speed = 5f;
     public GameObject impactEffect;
@@ -32,18 +34,48 @@ public class CannonProjectile : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
+        transform.LookAt(target);
     }
 
 
     void HitTarget()
     {
         GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 5f);
+        Destroy(effectIns, 2f);
+        
+            if (explosionRadius > 0f)
+            {
+            Explode();
+            }
+            else
+            {
+            Damage(target);
+            }
+        
 
-
+        //Destroy(target.gameObject);
         Destroy(gameObject);
     }
 
+    void Explode ()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.tag == "Player")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+    void Damage(Transform player)
+    {
+        Destroy(player.gameObject);
+    }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
 }

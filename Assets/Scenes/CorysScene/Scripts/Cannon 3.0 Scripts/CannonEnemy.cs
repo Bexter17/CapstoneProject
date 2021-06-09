@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CannonEnemy : MonoBehaviour
@@ -21,6 +22,18 @@ public class CannonEnemy : MonoBehaviour
 
     public GameObject cannonBallPrefab;
     public Transform firePoint;
+
+    [Header("Other Things")]
+
+    public Image healthBar;
+    
+    
+    [HideInInspector]
+
+    public float health = 100;
+    public int worth = 50;
+
+    
     
 
 
@@ -30,6 +43,20 @@ public class CannonEnemy : MonoBehaviour
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         
     }
+
+    public void TakeDamage (float amount)
+    {
+        health -= amount;
+
+        
+
+        if (health <= 0)
+        {
+            
+        }
+    }
+    
+
 
     // Update is called once per frame
     void UpdateTarget()
