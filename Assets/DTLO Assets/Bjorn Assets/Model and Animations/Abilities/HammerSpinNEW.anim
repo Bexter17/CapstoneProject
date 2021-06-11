@@ -57758,6 +57758,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.06666667
+    functionName: WhirlwindSFX
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: d7f4848775aa2384cb82dac9103724bc,
+      type: 3}
+    floatParameter: 1
+    intParameter: 0
+    messageOptions: 0
   - time: 0.2
     functionName: Hammerspin
     data: 

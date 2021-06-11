@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 1146471587586171532}
   - component: {fileID: 4055155292745887017}
   - component: {fileID: 2279447072341563875}
-  - component: {fileID: 7480604177419673144}
+  - component: {fileID: 2890759659243892598}
   m_Layer: 0
   m_Name: Rock_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1146471587586171532
 Transform:
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7480604177419673144
-BoxCollider:
+--- !u!135 &2890759659243892598
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.97420883, y: 1.3012061, z: 0.8675995}
-  m_Center: {x: 0.26428795, y: 3.037401, z: -12.899544}
+  m_Radius: 0.7111192
+  m_Center: {x: 0.30980003, y: 3.0007057, z: -12.912882}

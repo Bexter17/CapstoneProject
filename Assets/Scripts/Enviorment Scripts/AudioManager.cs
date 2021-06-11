@@ -86,4 +86,65 @@ public class AudioManager : MonoBehaviour
         audio.volume = volume;
         audio.spatialBlend = spatialBlend;
     }
+
+    public void FirstAttackSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Swing_01_WithReverb"));
+        audio.volume = volume;
+
+        //PlayNewSound("Swing_01_WithReverb", false, false, null);
+    }
+
+    public void SecondAttackSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Swing_02_withReverb"));
+        audio.volume = volume;
+
+        //PlayNewSound("Swing_02_withReverb", false, false, null);
+    }
+
+    public void ThirdAttackSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Swing_03_WithReverb"));
+        audio.volume = volume;
+
+        //PlayNewSound("Swing_03_WithReverb", false, false, null);
+    }
+
+    public void WhirlwindSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Whirlwind_02_Voice"));
+        audio.volume = volume;
+    }
+
+    public void HammerSmashSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("HammerSmash_01_Voice"));
+        audio.volume = volume;
+    }
+
+    public void DashSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Whirlwind_02_NoVoice"));
+        audio.volume = volume;
+    }
+
+    public void BjornOnHitSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load(""));
+        audio.volume = volume;
+    }
+
+    //public void EnemyOnHitSFX(float volume = 1f)
+    //{
+    //    audio.PlayOneShot((AudioClip)Resources.Load("Body Hit"));
+    //    audio.volume = volume;
+    //}
+
+    public void ThrowSFX(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("Bjorn_LineA_Take03"));
+        audio.volume = volume;
+    }
+
 }

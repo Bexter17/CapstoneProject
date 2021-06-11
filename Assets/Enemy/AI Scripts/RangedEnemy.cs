@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class RangedEnemy : MonoBehaviour
 {
-    //June 2, 2021
-    //Most Recent Change: added trigger box that is only enabled during player abilities for basic attack spam damage bug / hammersmashaoe doing damage
+    //June 5, 2021
+    //Most Recent Change: enemies cannot take damage more then once every 0.5 seconds
     #region Variables
 
     [Header("Essentials")]
@@ -58,6 +58,11 @@ public class RangedEnemy : MonoBehaviour
     private int basicStaggerCounter = 0;
     //1 / attackStaggerCount of basic attacks stagger
     private int attackStaggerCount = 4;
+
+    //TakeDamage Cooldown
+    private float damageInterval = 0;
+    private bool canTakeDamage = true;
+    private float takeDamageCooldown = .5f;
 
     IEnumerator Stun()
     {
@@ -243,11 +248,32 @@ public class RangedEnemy : MonoBehaviour
         #endregion
     }
     #region health/death
+
+    private void FixedUpdate()
+    {
+        if (canTakeDamage == false)
+        {
+            damageInterval += Time.deltaTime;
+            if (damageInterval >= takeDamageCooldown)
+            {
+                damageInterval = 0;
+                canTakeDamage = true;
+            }
+            else
+            {
+                canTakeDamage = false;
+            }
+        }
+    }
     public void takeDamage(int dmg)
     {
-        //Debug.Log(dmg + "Damage Taken");
-        agent.isStopped = true;
-        hp -= dmg;
+        if (canTakeDamage)
+        {
+            //Debug.Log("Clown Damage Taken: " + dmg);
+            agent.isStopped = true;
+            hp -= dmg;
+            canTakeDamage = false;
+        }
         if (hp <= 0 && !death)
         {
             transform.GetComponent<CapsuleCollider>().enabled = false;
@@ -350,7 +376,7 @@ public class RangedEnemy : MonoBehaviour
                     Debug.Log(this.transform.name + " Damage Applied!");
                 }
 
-                takeDamage(5);
+                takeDamage(10);
 
                 if (rb)
                 {
@@ -535,14 +561,16 @@ public class RangedEnemy : MonoBehaviour
         {
             if (cm.isAttacking)
             {
-                takeDamage(2);
+                //Big Bear: Basic Damage
+                takeDamage(5);
             }
             
 
             if (cm.isSpinning)
             {
                 Debug.Log("Hit by whirlwind");
-                takeDamage(4);
+                //Big Bear: Whirlwind Damage
+                takeDamage(20);
             }
         }
     }

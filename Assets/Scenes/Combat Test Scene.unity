@@ -11855,6 +11855,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1697440527 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6548381239326790149, guid: 08256832e9e5191459197d45907b0cd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4850393686984878178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707909625
 GameObject:
   m_ObjectHideFlags: 0
@@ -15433,6 +15439,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6882968560295412820, guid: 613ace275d4dea94daf2e5470659c79c,
         type: 3}
+    - target: {fileID: 1016093913191264025, guid: 08256832e9e5191459197d45907b0cd7,
+        type: 3}
+      propertyPath: RangedSpawn
+      value: 
+      objectReference: {fileID: 1697440527}
     - target: {fileID: 1016093913191264028, guid: 08256832e9e5191459197d45907b0cd7,
         type: 3}
       propertyPath: m_UpdateMode

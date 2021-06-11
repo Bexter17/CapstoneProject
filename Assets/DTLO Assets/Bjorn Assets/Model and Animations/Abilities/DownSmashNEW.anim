@@ -51924,6 +51924,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.3
+    functionName: HammerSmashSFX
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: d7f4848775aa2384cb82dac9103724bc,
+      type: 3}
+    floatParameter: 1
+    intParameter: 0
+    messageOptions: 0
   - time: 0.33333334
     functionName: HammerTrailSmash
     data: 

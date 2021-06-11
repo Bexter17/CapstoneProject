@@ -31,7 +31,13 @@ public class RandomVoiceLines : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        gameObject.GetComponent<Collider>().enabled = false;
+        if (other.gameObject.tag == "Player")
+        {
+            gameObject.GetComponent<Collider>().enabled = false;
+        }
+            //gameObject.GetComponent<Collider>().enabled = false;
+        
+
     }
 
     public void Kill()

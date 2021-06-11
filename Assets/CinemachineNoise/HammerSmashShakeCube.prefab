@@ -77,10 +77,10 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: 4413b18c3dd70b34bb7f8ef9aa88ab16, type: 2}
-    m_AmplitudeGain: 0.85
-    m_FrequencyGain: 0.85
+    m_AmplitudeGain: 0.4
+    m_FrequencyGain: 0.4
     m_RepeatMode: 0
-    m_Randomize: 1
+    m_Randomize: 0
     m_TimeEnvelope:
       m_AttackShape:
         serializedVersion: 2
@@ -101,13 +101,13 @@ MonoBehaviour:
       m_HoldForever: 0
     m_ImpactRadius: 100
     m_DirectionMode: 0
-    m_DissipationMode: 2
+    m_DissipationMode: 1
     m_DissipationDistance: 1000
     m_PropagationSpeed: 343
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1
-  m_IgnoreTag: 
+    m_Bits: 2048
+  m_IgnoreTag: Enemy
   m_UseImpactDirection: 0
   m_ScaleImpactWithMass: 0
   m_ScaleImpactWithSpeed: 0

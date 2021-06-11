@@ -97,7 +97,7 @@ public class Sound
         }
         else
         {
-            source.Pause();
+           // source.Pause();
         }
     }
 

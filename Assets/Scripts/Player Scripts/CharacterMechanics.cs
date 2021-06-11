@@ -1144,22 +1144,7 @@ public class CharacterMechanics : MonoBehaviour
             }
         }
     }
-
-    public void firstAttackSFX()
-    {
-
-        am.PlayNewSound("Swing_01_WithReverb", false, false, null);
-    }
-
-    public void secondAttackSFX()
-    {
-        am.PlayNewSound("Swing_02_withReverb", false, false, null);
-    }
-
-    public void thirdAttackSFX()
-    {
-        am.PlayNewSound("Swing_03_WithReverb", false, false, null);
-    }
+          
     #endregion
 
     #region Abilities
@@ -1488,8 +1473,10 @@ public class CharacterMechanics : MonoBehaviour
 
         if (IsAimOn)
         {
-            if (aims)
-                aims.Throw();
+            //if (aims)
+              //  aims.Throw();
+
+            Throw();
         }
     }
 
@@ -1560,11 +1547,18 @@ public class CharacterMechanics : MonoBehaviour
 
     public void toggleIsPlaying()
     {
-        if(!isPlaying)
-        isPlaying = true;
+        if (!isPlaying)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            isPlaying = true;
+        }
 
-        else if(isPlaying)
-        isPlaying = false;
+        else if (isPlaying)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            isPlaying = false;
+        }
+
     }
 
     #endregion
@@ -1578,5 +1572,26 @@ public class CharacterMechanics : MonoBehaviour
     {
         Debug.Log("Player rotated by " + input.x);
         rotationAmount = input.x;
+    }
+
+    //Aimed Ranged Attack until we organize the code
+    public void Throw()
+    {
+        //isCooldown1 = true;
+        //abilityImage1.fillAmount = 1;
+
+        // if (Input.GetMouseButton(1) && Input.GetButtonDown("Fire5"))
+        //{
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit))   //Shoots directly forward from camera wherever it is looking
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+        ac.throw_();
+        Vector3 lookdirection = hit.point - transform.position;
+        GameObject bullet = Instantiate(RangePrefab, RangedSpawn.transform.position, Quaternion.LookRotation(lookdirection)) as GameObject;  //Instantiate projectile and then delete after 5 seconds
+        bullet.GetComponent<Rigidbody>().AddForce(lookdirection * 1000);
+        Destroy(bullet, 5);
+        //}
     }
 }

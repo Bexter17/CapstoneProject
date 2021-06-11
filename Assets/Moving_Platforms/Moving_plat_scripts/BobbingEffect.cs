@@ -14,7 +14,7 @@ public class BobbingEffect : MonoBehaviour
         this.originalY = this.transform.position.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x,
             originalY + ((float)Math.Sin(Time.time) * floatStrength),

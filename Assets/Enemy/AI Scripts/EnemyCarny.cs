@@ -8,8 +8,8 @@ using UnityEngine.AI;
 //Combat Script
 public class EnemyCarny : MonoBehaviour
 {
-    //June 2, 2021
-    //Most Recent Change: Only deal damage when weapon collides with player / 0 rotation during attack animations
+    //June 5, 2021
+    //Most Recent Change: Whirlwind does damage all ability damages commented with big bear / enemies cannot take damage more then once every 0.5 seconds
 
 
     //remaining Distance instead of vector3.distance
@@ -27,6 +27,11 @@ public class EnemyCarny : MonoBehaviour
     //used to track the player for giveDamage function
     private GameObject Player;
     private bool enemyDissolveIn = false;
+
+    //Audio
+    public new AudioSource audio;
+    AudioManager am;
+    private int randNumAudio;
 
     //HP
     [Header("Essentials")]
@@ -53,6 +58,7 @@ public class EnemyCarny : MonoBehaviour
 
     [SerializeField] float rangeKnockbackForce;
 
+    private float timeLastAttack = 0;
 
     //STATES
     enum EnemyState { Start, Patrol, Chase, Attack, Stun, lockChase };
@@ -94,8 +100,12 @@ public class EnemyCarny : MonoBehaviour
 
     private int basicStaggerCounter = 0;
     //1 / attackStaggerCount of basic attacks stagger
-    private int attackStaggerCount = 4;
+    private int attackStaggerCount = 3;
 
+    //TakeDamage Cooldown
+    private float damageInterval = 0;
+    private bool canTakeDamage = true;
+    private float takeDamageCooldown = .5f;
 
 
     //Used to stun the enemy, wait a few seconds for AOE then return to normal function. 
@@ -148,6 +158,8 @@ public class EnemyCarny : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Player").transform;
         CombatScript = GameObject.Find("GameManager").GetComponent<CombatManager>();
+
+        audio = this.GetComponent<AudioSource>();
         #endregion
         #region SetWaypoints
         //STATES
@@ -230,9 +242,6 @@ public class EnemyCarny : MonoBehaviour
 
         if (whirlKnockbackForce <= 0)
             whirlKnockbackForce = 4;
-
-        if (rangeKnockbackForce <= 0)
-            rangeKnockbackForce = 2;
 
         startingMovementSpeed = enemyMovement;
 
@@ -354,11 +363,16 @@ public class EnemyCarny : MonoBehaviour
                     //1-3
                     //Set to 1, 4 once third animation is added
                     eAnim.SetInteger("randAttk", Random.Range(1, numberOfAttacks+1));
+                    //1-3
+                    randNumAudio = Random.Range(1, 4);
                     randNumGenerated = true;
                     isRotating = true;
                 }
                 else if (eAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack 1") || eAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack 2") || eAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack 3"))
                 {
+                    //Voice Line Function Call For Jer Bear:
+                    //EnemyVoiceLine(randNumAudio);
+
                     randNumGenerated = false;
                     isRotating = false;
                 }
@@ -371,6 +385,22 @@ public class EnemyCarny : MonoBehaviour
             }
         }
         #endregion
+    }
+    private void FixedUpdate()
+    {
+        if (canTakeDamage == false)
+        {
+            damageInterval += Time.deltaTime;
+            if (damageInterval >= takeDamageCooldown)
+            {
+                damageInterval = 0;
+                canTakeDamage = true;
+            }
+            else
+            {
+                canTakeDamage = false;
+            }
+        }
     }
     //COLLISIONS
     #region Collisions
@@ -393,6 +423,7 @@ public class EnemyCarny : MonoBehaviour
             }
 
             #endregion
+            //Big Bear HammerSmash Damage
             takeDamage(35);
             StartCoroutine(Stun());
 
@@ -422,7 +453,6 @@ public class EnemyCarny : MonoBehaviour
         {
             takeDamage(3);
         }
-
         if (collision.gameObject.CompareTag("Hammer"))
         {
             if (cm.isAttacking)
@@ -433,7 +463,7 @@ public class EnemyCarny : MonoBehaviour
                     Debug.Log(this.transform.name + " Damage Applied!");
                 }
 
-                takeDamage(5);
+                takeDamage(10);
 
                 if (rb)
                 {
@@ -463,8 +493,8 @@ public class EnemyCarny : MonoBehaviour
                     Debug.Log(this.transform.name + " Hit by Whirlwind!");
                     Debug.Log(this.transform.name + " Damage Applied!");
                 }
-
-                takeDamage(4);
+                //Big Bear: Whirlwind Damage
+                takeDamage(20);
 
                 if (rb)
                 {
@@ -489,7 +519,8 @@ public class EnemyCarny : MonoBehaviour
                 Debug.Log(this.transform.name + " Damage Applied!");
             }
 
-            takeDamage(7);
+            //Big Bear: Dash Damage
+            takeDamage(10);
 
             if (rb)
             {
@@ -579,7 +610,6 @@ public class EnemyCarny : MonoBehaviour
         //So that ranged attack doesn't knockback as much as melee
         if (other.gameObject.tag == "PlayerRanged")
         {
-
             #region Debug Log
 
             if (combatDebug)
@@ -590,16 +620,16 @@ public class EnemyCarny : MonoBehaviour
             }
 
             #endregion
+            //Big Bear: Ranged Damage
+            takeDamage(4);
 
-            takeDamage(8);
+            //if (rb)
+            //{
+            //    Vector3 direction = transform.position - other.transform.position;
+            //    direction.y = 0;
 
-            if (rb)
-            {
-                Vector3 direction = transform.position - other.transform.position;
-                direction.y = 0;
-
-                rb.AddForce(direction.normalized * rangeKnockbackForce, ForceMode.Impulse);
-            }
+            //    rb.AddForce(direction.normalized * rangeKnockbackForce, ForceMode.Impulse);
+            //}
 
             if (combatDebug)
             {
@@ -639,9 +669,15 @@ public class EnemyCarny : MonoBehaviour
     #region damage
     public void takeDamage(int dmg)
     {
-        //Debug.Log(dmg + "Damage Taken");
-        agent.isStopped = true;
-        hp -= dmg;
+        if (canTakeDamage)
+        {
+            EnemyOnHitSFX();
+            //Debug.Log("Carny Damage Taken: " + dmg);
+            agent.isStopped = true;
+            hp -= dmg;
+            canTakeDamage = false;
+        }
+
         if (hp <= 0 && !death)
         {
             //transform.GetComponent<CapsuleCollider>().enabled = false;
@@ -803,5 +839,12 @@ public class EnemyCarny : MonoBehaviour
         {
             CombatScript.GivePlayerDamage(this.transform, dmgDealt / 2);
         }
+    }
+
+    public void EnemyOnHitSFX(float volume = 1f)
+    {
+        //Debug.Log("Carny Hit Sound");
+        audio.PlayOneShot((AudioClip)Resources.Load("Body Hit"));
+        audio.volume = volume;
     }
 }

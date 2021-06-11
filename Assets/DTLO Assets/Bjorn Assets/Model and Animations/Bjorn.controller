@@ -452,11 +452,10 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: 9fc16ee0090ab2b45860714a0ad2b4c9,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 93b33582c8757cc4c891bf5702ee3c27, type: 2}
     m_Threshold: -1
     m_Position: {x: -1, y: 0}
-    m_TimeScale: -1
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
@@ -470,8 +469,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: 9fc16ee0090ab2b45860714a0ad2b4c9,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 93b33582c8757cc4c891bf5702ee3c27, type: 2}
     m_Threshold: 1
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -479,8 +477,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: 08a867e7111913344949b0fb1777d290,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: ae3c42b0b6296a14b89e3f3b9e78384d, type: 2}
     m_Threshold: 2
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -488,8 +485,7 @@ BlendTree:
     m_DirectBlendParameter: strafeSpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 1827226128182048838, guid: 1b8d754cea9683641abc1c2ddc95dcce,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: 013223b474757b847b4f295b2d684835, type: 2}
     m_Threshold: 3
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -502,7 +498,7 @@ BlendTree:
   m_MaxThreshold: 3
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
-  m_BlendType: 3
+  m_BlendType: 1
 --- !u!1101 &-570676545711923447
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -564,13 +560,13 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: Speed
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 2
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Strafe
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 2
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -919,7 +915,7 @@ AnimatorStateMachine:
     m_Position: {x: 850, y: -220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8015288304828336945}
-    m_Position: {x: -40, y: -200, z: 0}
+    m_Position: {x: -30, y: -200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3725681855493136485}
     m_Position: {x: -110, y: -120, z: 0}

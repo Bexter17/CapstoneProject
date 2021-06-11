@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8500794167085109261}
   - component: {fileID: 4505230035557260691}
   - component: {fileID: 57034226464478207}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_SolidCrate
   m_TagString: Box
   m_Icon: {fileID: 0}
