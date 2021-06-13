@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1060786789272928697}
   - component: {fileID: 6929009658828548805}
   - component: {fileID: 4328547349388203806}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P01_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3577371395464388505}
   - component: {fileID: 1444490069325449634}
   - component: {fileID: 7945034026376918563}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P07_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880878590022978532}
   - component: {fileID: -5639629020799800707}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SM_BarricadeBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 5812401782981711096}
   - component: {fileID: 4323633857703447903}
   - component: {fileID: 6706127897242453457}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P03_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 4101566039061928964}
   - component: {fileID: 6625709188830158405}
   - component: {fileID: 1170153020072249784}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P06_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 8281030082997999164}
   - component: {fileID: 6339982929172824858}
   - component: {fileID: 858705428130651277}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P02_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 5280307401072387849}
   - component: {fileID: 3587886662027835699}
   - component: {fileID: 2717011498526910218}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: BarricadeBroken_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 4063181033685895843}
   - component: {fileID: 8986871198740395408}
   - component: {fileID: 6832434626698669440}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: RightStump_Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 299502301510674632}
   - component: {fileID: 310836862012726106}
   - component: {fileID: 9009911578298496869}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P04_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 1166440893768013659}
   - component: {fileID: 935734810757867604}
   - component: {fileID: 8583822442106871441}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: P05_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}

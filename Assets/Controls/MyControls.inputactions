@@ -406,6 +406,17 @@
                 },
                 {
                     "name": "",
+                    "id": "202cfe8b-1461-4ff7-beb4-c67d903b5bd2",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Universal",
+                    "action": "PlayerMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1fd6fba0-86a7-4b4e-809d-27c33f55609a",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -774,6 +785,52 @@
                 {
                     "devicePath": "<XboxOneGampadiOS>",
                     "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Universal",
+            "bindingGroup": "Universal",
+            "devices": [
+                {
+                    "devicePath": "<AndroidGamepadXboxController>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<iOSGameController>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<DualShock4GampadiOS>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<SwitchProControllerHID>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<WebGLGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<XboxOneGampadiOS>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<VirtualMouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
                     "isOR": false
                 }
             ]

@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 15
   lifeTime: 0
-  dmgDealt: 20
+  dmgDealt: 10
 --- !u!54 &3891002260391394033
 Rigidbody:
   m_ObjectHideFlags: 0

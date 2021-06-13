@@ -15,6 +15,8 @@ public class GenericIK : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField] GameObject playerModel;
+
     #region Body Parts
 
     [Header("Body Parts")]
@@ -130,7 +132,7 @@ public class GenericIK : MonoBehaviour
 
     float anim_speed;
 
-
+    [SerializeField] float rotationSpeed;
 
     #endregion
 
@@ -176,6 +178,9 @@ public class GenericIK : MonoBehaviour
         animator = this.transform.GetComponent<Animator>();
 
         rb = this.transform.GetComponent<Rigidbody>();
+
+        if (rotationSpeed == 0)
+            rotationSpeed = 8;
     }
 
     // Update is called once per frame
@@ -226,9 +231,22 @@ public class GenericIK : MonoBehaviour
             if (IKDebug)
                 Debug.Log("IK: angle = " + angle);
 
-          CentralJoints.t_root.localEulerAngles = new Vector3(0, 0, angle);
-          CentralJoints.ctrl_root.localEulerAngles = new Vector3(0, 0, angle);
-            //this.transform.localEulerAngles = new Vector3(this.transform.rotation.x, this.transform.rotation.y, angle);
+            if (angle > Mathf.Epsilon)
+            {
+                angle = Mathf.Clamp(angle, -20, 20);
+                Vector3 currentEulerAngle = new Vector3(0, 0, angle) * Time.deltaTime * rotationSpeed;
+                //CentralJoints.t_root.localEulerAngles = new Vector3(0, 0, angle);
+                //CentralJoints.ctrl_root.localEulerAngles = new Vector3(0, 0, angle);
+                CentralJoints.t_root.localEulerAngles = currentEulerAngle;
+                CentralJoints.ctrl_root.localEulerAngles = currentEulerAngle;
+                //CentralJoints.t_root.Rotate(newRot * Time.deltaTime * rotationSpeed);
+                //CentralJoints.ctrl_root.Rotate(newRot * Time.deltaTime * rotationSpeed);
+                //CentralJoints.t_root.localRotation = Quaternion.Slerp(this.transform.rotation, newRot, Time.deltaTime);
+                //CentralJoints.ctrl_root.localRotation = Quaternion.Slerp(this.transform.rotation, newRot, Time.deltaTime);
+                //this.transform.localEulerAngles = new Vector3(this.transform.rotation.x, this.transform.rotation.y, angle);
+                //Quaternion newRotation = new Quaternion(this.transform.rotation.x, this.transform.rotation.y, angle, this.transform.rotation.w);
+                //playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, Time.deltaTime);
+            }
         }
     }
 

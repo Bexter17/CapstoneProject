@@ -59,6 +59,8 @@ public class Destructable : MonoBehaviour
                 GameObject brokenVersion = Instantiate(destroyedVersion, transform.position, transform.rotation, destroyedVersion.transform.parent);
                 brokenVersion.transform.localScale = new Vector3(2, 2, 2);
                 Object.Destroy(brokenVersion, 5f);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                Destroy(gameObject.GetComponent<BoxCollider>());
 
                 Destroy(gameObject);
 
@@ -80,6 +82,8 @@ public class Destructable : MonoBehaviour
                 GameObject brokenVersion = Instantiate(destroyedVersion, transform.position, transform.rotation, destroyedVersion.transform.parent);
                 brokenVersion.transform.localScale = new Vector3(2, 2, 2);
                 Object.Destroy(brokenVersion, 5f);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                Destroy(gameObject.GetComponent<BoxCollider>());
 
                 Destroy(gameObject);
             }
@@ -90,6 +94,8 @@ public class Destructable : MonoBehaviour
                 GameObject brokenVersion = Instantiate(destroyedVersion, transform.position, transform.rotation, destroyedVersion.transform.parent);
                 brokenVersion.transform.localScale = new Vector3(2, 2, 2);
                 Object.Destroy(brokenVersion, 5f);
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                Destroy(gameObject.GetComponent<BoxCollider>());
 
                 Destroy(gameObject);
             }

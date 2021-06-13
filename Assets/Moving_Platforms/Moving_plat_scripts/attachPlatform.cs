@@ -10,15 +10,18 @@ public class attachPlatform : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-
+		/*
 		if (other.gameObject == Player)
 		{
 			Player.transform.parent = other.gameObject.transform;
 		}
+
         else
         {
 			Player.transform.parent = null;
 		}
-
+		*/
 	}
+
+
 }

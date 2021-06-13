@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnerTrigger : MonoBehaviour
 {
+
+
+    public GameObject sandwall;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class SpawnerTrigger : MonoBehaviour
             GameObject.Find("EnemySpawn 1").GetComponent<EnemySpawn>().spawn = true;
             GameObject.Find("EnemySpawn 2").GetComponent<EnemySpawn>().spawn = true;
             GameObject.Find("EnemySpawn 3").GetComponent<EnemySpawn>().spawn = true;
+            sandwall.SetActive(true);
         }
     }
 }

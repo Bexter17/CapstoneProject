@@ -147,4 +147,10 @@ public class AudioManager : MonoBehaviour
         audio.volume = volume;
     }
 
+    public void Fortuneteller(float volume = 1f)
+    {
+        audio.PlayOneShot((AudioClip)Resources.Load("FortuneTeller_LineC_Tk01"));
+        audio.volume = volume;
+    }
+
 }

@@ -120,125 +120,8 @@ TextureImporter:
       213: -1729373069598626673
     second: UI-Sprite-Altas_38
   - first:
-      213: -7795394923442750366
-    second: UI-Sprite-Altas_0
-  - first:
       213: 2904196003735071018
     second: UI-Sprite-Altas_39
-  - first:
-      213: -1352612517077899892
-    second: UI-Sprite-Altas_1
-  - first:
-      213: 8576272275112349601
-    second: UI-Sprite-Altas_2
-  - first:
-      213: -3390467906070841712
-    second: UI-Sprite-Altas_3
-  - first:
-      213: -1844850995151021201
-    second: UI-Sprite-Altas_4
-  - first:
-      213: 7026135026960131093
-    second: UI-Sprite-Altas_5
-  - first:
-      213: -1459950795063877375
-    second: UI-Sprite-Altas_6
-  - first:
-      213: -2183227651796233796
-    second: UI-Sprite-Altas_7
-  - first:
-      213: 7040793651691877725
-    second: UI-Sprite-Altas_8
-  - first:
-      213: -5089241787703727470
-    second: UI-Sprite-Altas_9
-  - first:
-      213: -5950701241689109909
-    second: UI-Sprite-Altas_10
-  - first:
-      213: -4279857367943618765
-    second: UI-Sprite-Altas_11
-  - first:
-      213: 5173649379182308637
-    second: UI-Sprite-Altas_12
-  - first:
-      213: 477019134948513989
-    second: UI-Sprite-Altas_13
-  - first:
-      213: -6458793268116701217
-    second: UI-Sprite-Altas_14
-  - first:
-      213: 3257349325745870873
-    second: UI-Sprite-Altas_15
-  - first:
-      213: -1057583495975135527
-    second: UI-Sprite-Altas_16
-  - first:
-      213: 2683010497110901293
-    second: UI-Sprite-Altas_17
-  - first:
-      213: -6659137287712046364
-    second: UI-Sprite-Altas_18
-  - first:
-      213: 7078763340900440425
-    second: UI-Sprite-Altas_19
-  - first:
-      213: -118093018838997032
-    second: UI-Sprite-Altas_20
-  - first:
-      213: 4282857061409793190
-    second: UI-Sprite-Altas_21
-  - first:
-      213: 5435719839050501151
-    second: UI-Sprite-Altas_22
-  - first:
-      213: -5726690411457661809
-    second: UI-Sprite-Altas_23
-  - first:
-      213: 3643830367384751321
-    second: UI-Sprite-Altas_24
-  - first:
-      213: -7484568026967992744
-    second: UI-Sprite-Altas_25
-  - first:
-      213: -7618816147283181412
-    second: UI-Sprite-Altas_26
-  - first:
-      213: 938488018260667088
-    second: UI-Sprite-Altas_27
-  - first:
-      213: 9101040441079171977
-    second: UI-Sprite-Altas_28
-  - first:
-      213: 854294991593846937
-    second: UI-Sprite-Altas_29
-  - first:
-      213: 2583539023284387409
-    second: UI-Sprite-Altas_30
-  - first:
-      213: 4336193673559683141
-    second: UI-Sprite-Altas_31
-  - first:
-      213: -6138911650561285525
-    second: UI-Sprite-Altas_32
-  - first:
-      213: 8538350076767045844
-    second: UI-Sprite-Altas_33
-  - first:
-      213: 1283056718244877392
-    second: UI-Sprite-Altas_34
-  - first:
-      213: -6846027671106773208
-    second: UI-Sprite-Altas_35
-  - first:
-      213: 8343442977671272398
-    second: UI-Sprite-Altas_36
-  - first:
-      213: 2862366854430941336
-    second: UI-Sprite-Altas_37
-  - first:
-      213: -9096834318213748358
-    second: UI-Sprite-Altas_38
   - first:
       213: 6969619524044427157
     second: UI-Sprite-Altas_40
@@ -260,588 +143,6 @@ TextureImporter:
   - first:
       213: 5427988724690227263
     second: UI-Sprite-Altas_46
-  - first:
-      213: 5271677470081165574
-    second: UI-Sprite-Altas_47
-  - first:
-      213: 599366016291760242
-    second: UI-Sprite-Altas_48
-  - first:
-      213: -8740779424231161720
-    second: UI-Sprite-Altas_49
-  - first:
-      213: -8652030299167176043
-    second: UI-Sprite-Altas_50
-  - first:
-      213: -5898723177537494123
-    second: UI-Sprite-Altas_51
-  - first:
-      213: 8515832359909756269
-    second: UI-Sprite-Altas_52
-  - first:
-      213: -6186199526787025071
-    second: UI-Sprite-Altas_53
-  - first:
-      213: 725655594459086517
-    second: UI-Sprite-Altas_54
-  - first:
-      213: 6866815525423800145
-    second: UI-Sprite-Altas_55
-  - first:
-      213: 4870331458312391659
-    second: UI-Sprite-Altas_56
-  - first:
-      213: 4351610584914717686
-    second: UI-Sprite-Altas_57
-  - first:
-      213: 5708809648702771217
-    second: UI-Sprite-Altas_58
-  - first:
-      213: -7305525276081377379
-    second: UI-Sprite-Altas_59
-  - first:
-      213: -3182807294650634821
-    second: UI-Sprite-Altas_60
-  - first:
-      213: 8686546604124833574
-    second: UI-Sprite-Altas_61
-  - first:
-      213: -6230043974254244571
-    second: UI-Sprite-Altas_62
-  - first:
-      213: -2348929327515034895
-    second: UI-Sprite-Altas_63
-  - first:
-      213: 5584673528796884913
-    second: UI-Sprite-Altas_64
-  - first:
-      213: 2283398336851390837
-    second: UI-Sprite-Altas_65
-  - first:
-      213: 3700311778710042780
-    second: UI-Sprite-Altas_66
-  - first:
-      213: -7302364131814103558
-    second: UI-Sprite-Altas_67
-  - first:
-      213: -5276564689211264829
-    second: UI-Sprite-Altas_68
-  - first:
-      213: 5072887232259416951
-    second: UI-Sprite-Altas_69
-  - first:
-      213: -4945995469371975009
-    second: UI-Sprite-Altas_70
-  - first:
-      213: 5455787736912597799
-    second: UI-Sprite-Altas_71
-  - first:
-      213: 4528470852209513317
-    second: UI-Sprite-Altas_72
-  - first:
-      213: 5928263083658277104
-    second: UI-Sprite-Altas_73
-  - first:
-      213: -1981318036698605410
-    second: UI-Sprite-Altas_74
-  - first:
-      213: -308107620016931192
-    second: UI-Sprite-Altas_75
-  - first:
-      213: 5322892508887006076
-    second: UI-Sprite-Altas_76
-  - first:
-      213: -4629481607177791497
-    second: UI-Sprite-Altas_77
-  - first:
-      213: -4743871594675857525
-    second: UI-Sprite-Altas_78
-  - first:
-      213: -1987838710372729240
-    second: UI-Sprite-Altas_79
-  - first:
-      213: 1385252228453672994
-    second: UI-Sprite-Altas_80
-  - first:
-      213: -691255183513096918
-    second: UI-Sprite-Altas_81
-  - first:
-      213: 3303644267961974666
-    second: UI-Sprite-Altas_82
-  - first:
-      213: 8516748458232768663
-    second: UI-Sprite-Altas_83
-  - first:
-      213: -3123912801407700480
-    second: UI-Sprite-Altas_84
-  - first:
-      213: -7838100201354744363
-    second: UI-Sprite-Altas_85
-  - first:
-      213: -1063276950006386237
-    second: UI-Sprite-Altas_86
-  - first:
-      213: -3530360950155295124
-    second: UI-Sprite-Altas_87
-  - first:
-      213: -1919904224157984493
-    second: UI-Sprite-Altas_88
-  - first:
-      213: -5265693537981360859
-    second: UI-Sprite-Altas_89
-  - first:
-      213: -7120010271939977362
-    second: UI-Sprite-Altas_90
-  - first:
-      213: -7962211940080283526
-    second: UI-Sprite-Altas_91
-  - first:
-      213: -7514768018323873760
-    second: UI-Sprite-Altas_92
-  - first:
-      213: 1356475036683580833
-    second: UI-Sprite-Altas_93
-  - first:
-      213: 7057110400452085594
-    second: UI-Sprite-Altas_94
-  - first:
-      213: 7666059383657901345
-    second: UI-Sprite-Altas_95
-  - first:
-      213: -8985660526604280081
-    second: UI-Sprite-Altas_96
-  - first:
-      213: -3336591324444484282
-    second: UI-Sprite-Altas_97
-  - first:
-      213: -5906083624407025516
-    second: UI-Sprite-Altas_98
-  - first:
-      213: 8034773265692460353
-    second: UI-Sprite-Altas_99
-  - first:
-      213: 4766203981821849472
-    second: UI-Sprite-Altas_100
-  - first:
-      213: -2919770435587755299
-    second: UI-Sprite-Altas_101
-  - first:
-      213: 5881493773143093381
-    second: UI-Sprite-Altas_102
-  - first:
-      213: 2936549322641978406
-    second: UI-Sprite-Altas_103
-  - first:
-      213: 6778718433187284755
-    second: UI-Sprite-Altas_104
-  - first:
-      213: 3133649197947977327
-    second: UI-Sprite-Altas_105
-  - first:
-      213: -1980556021041476906
-    second: UI-Sprite-Altas_106
-  - first:
-      213: -3732596824805149463
-    second: UI-Sprite-Altas_107
-  - first:
-      213: -2941971935207506211
-    second: UI-Sprite-Altas_108
-  - first:
-      213: 2211175775099206453
-    second: UI-Sprite-Altas_109
-  - first:
-      213: 6770428135623571040
-    second: UI-Sprite-Altas_110
-  - first:
-      213: -2890278424320080831
-    second: UI-Sprite-Altas_111
-  - first:
-      213: 9161245386516466170
-    second: UI-Sprite-Altas_112
-  - first:
-      213: 6637868548579725169
-    second: UI-Sprite-Altas_113
-  - first:
-      213: -4129355608686959045
-    second: UI-Sprite-Altas_114
-  - first:
-      213: 4019501574866685328
-    second: UI-Sprite-Altas_115
-  - first:
-      213: 6694454924270762638
-    second: UI-Sprite-Altas_116
-  - first:
-      213: 6720344850368579455
-    second: UI-Sprite-Altas_117
-  - first:
-      213: 7056300989143294111
-    second: UI-Sprite-Altas_118
-  - first:
-      213: -6105392515471476611
-    second: UI-Sprite-Altas_119
-  - first:
-      213: 5592623853741911916
-    second: UI-Sprite-Altas_120
-  - first:
-      213: 4439843964108651323
-    second: UI-Sprite-Altas_121
-  - first:
-      213: -2043570894749530920
-    second: UI-Sprite-Altas_122
-  - first:
-      213: 1920271768544694301
-    second: UI-Sprite-Altas_123
-  - first:
-      213: 3734322770857936083
-    second: UI-Sprite-Altas_124
-  - first:
-      213: 4246936747767786445
-    second: UI-Sprite-Altas_125
-  - first:
-      213: -8305943392664648307
-    second: UI-Sprite-Altas_126
-  - first:
-      213: 2520160835199210689
-    second: UI-Sprite-Altas_127
-  - first:
-      213: -5397997167505497755
-    second: UI-Sprite-Altas_128
-  - first:
-      213: -2609147213794215780
-    second: UI-Sprite-Altas_129
-  - first:
-      213: 7317367758694057386
-    second: UI-Sprite-Altas_130
-  - first:
-      213: -8674911108173936320
-    second: UI-Sprite-Altas_131
-  - first:
-      213: -3752030377481557125
-    second: UI-Sprite-Altas_132
-  - first:
-      213: -488982781320945783
-    second: UI-Sprite-Altas_133
-  - first:
-      213: -1222065488415114886
-    second: UI-Sprite-Altas_134
-  - first:
-      213: -1825840812887338642
-    second: UI-Sprite-Altas_135
-  - first:
-      213: 5158239613472882465
-    second: UI-Sprite-Altas_136
-  - first:
-      213: 5361029780624044952
-    second: UI-Sprite-Altas_137
-  - first:
-      213: -6802031202355466441
-    second: UI-Sprite-Altas_138
-  - first:
-      213: 8825668264772916742
-    second: UI-Sprite-Altas_139
-  - first:
-      213: 6449956929928999005
-    second: UI-Sprite-Altas_140
-  - first:
-      213: 6714715100947993935
-    second: UI-Sprite-Altas_141
-  - first:
-      213: 1652053362509728531
-    second: UI-Sprite-Altas_142
-  - first:
-      213: -711964369327692462
-    second: UI-Sprite-Altas_143
-  - first:
-      213: 5786773068563075460
-    second: UI-Sprite-Altas_144
-  - first:
-      213: 5819945228251301132
-    second: UI-Sprite-Altas_145
-  - first:
-      213: 4947742116637686230
-    second: UI-Sprite-Altas_146
-  - first:
-      213: 7019148439507432350
-    second: UI-Sprite-Altas_147
-  - first:
-      213: -1075842537475777441
-    second: UI-Sprite-Altas_148
-  - first:
-      213: -296879740028226657
-    second: UI-Sprite-Altas_149
-  - first:
-      213: -8721493097625928474
-    second: UI-Sprite-Altas_150
-  - first:
-      213: -5795812638109963543
-    second: UI-Sprite-Altas_151
-  - first:
-      213: 7315603383040657635
-    second: UI-Sprite-Altas_152
-  - first:
-      213: -4025079345314650730
-    second: UI-Sprite-Altas_153
-  - first:
-      213: 4261625765025525281
-    second: UI-Sprite-Altas_154
-  - first:
-      213: -54623485911031677
-    second: UI-Sprite-Altas_155
-  - first:
-      213: 9094584227195213029
-    second: UI-Sprite-Altas_156
-  - first:
-      213: 2708991738161147644
-    second: UI-Sprite-Altas_157
-  - first:
-      213: -1842462957094859007
-    second: UI-Sprite-Altas_158
-  - first:
-      213: 4533426265450549083
-    second: UI-Sprite-Altas_159
-  - first:
-      213: 5558261169903215921
-    second: UI-Sprite-Altas_160
-  - first:
-      213: 7798706963706631968
-    second: UI-Sprite-Altas_161
-  - first:
-      213: -253801901227179565
-    second: UI-Sprite-Altas_162
-  - first:
-      213: 4257593265757315870
-    second: UI-Sprite-Altas_163
-  - first:
-      213: -32273708672564205
-    second: UI-Sprite-Altas_164
-  - first:
-      213: 6768978667067940195
-    second: UI-Sprite-Altas_165
-  - first:
-      213: 8666454081874681202
-    second: UI-Sprite-Altas_166
-  - first:
-      213: 6736100603211875063
-    second: UI-Sprite-Altas_167
-  - first:
-      213: -1387306085196713410
-    second: UI-Sprite-Altas_168
-  - first:
-      213: 5743726891552338814
-    second: UI-Sprite-Altas_169
-  - first:
-      213: -6809022891597391712
-    second: UI-Sprite-Altas_170
-  - first:
-      213: -847108836120411168
-    second: UI-Sprite-Altas_171
-  - first:
-      213: -3689404119528059173
-    second: UI-Sprite-Altas_172
-  - first:
-      213: 9024648850515314613
-    second: UI-Sprite-Altas_173
-  - first:
-      213: 8552752937668767277
-    second: UI-Sprite-Altas_174
-  - first:
-      213: -1656543271512893376
-    second: UI-Sprite-Altas_175
-  - first:
-      213: -3582957506164597243
-    second: UI-Sprite-Altas_176
-  - first:
-      213: 1273451089963928892
-    second: UI-Sprite-Altas_177
-  - first:
-      213: 7380312110825875349
-    second: UI-Sprite-Altas_178
-  - first:
-      213: -13683804267265689
-    second: UI-Sprite-Altas_179
-  - first:
-      213: -7477069822979491574
-    second: UI-Sprite-Altas_180
-  - first:
-      213: 6820730174578190558
-    second: UI-Sprite-Altas_181
-  - first:
-      213: -5453761793067579302
-    second: UI-Sprite-Altas_182
-  - first:
-      213: 7351578271684995213
-    second: UI-Sprite-Altas_183
-  - first:
-      213: 7957577164980611785
-    second: UI-Sprite-Altas_184
-  - first:
-      213: -5628768004608471078
-    second: UI-Sprite-Altas_185
-  - first:
-      213: 8072443038093576791
-    second: UI-Sprite-Altas_186
-  - first:
-      213: 1432416616404395425
-    second: UI-Sprite-Altas_187
-  - first:
-      213: -7118929992769399773
-    second: UI-Sprite-Altas_188
-  - first:
-      213: -4736829026844762503
-    second: UI-Sprite-Altas_189
-  - first:
-      213: 1341371445008186738
-    second: UI-Sprite-Altas_190
-  - first:
-      213: 839263865436172252
-    second: UI-Sprite-Altas_191
-  - first:
-      213: -1393082384049997472
-    second: UI-Sprite-Altas_192
-  - first:
-      213: 7942764620586279033
-    second: UI-Sprite-Altas_193
-  - first:
-      213: 2270188712574129204
-    second: UI-Sprite-Altas_194
-  - first:
-      213: -881993863555412151
-    second: UI-Sprite-Altas_195
-  - first:
-      213: 7680111715192486915
-    second: UI-Sprite-Altas_196
-  - first:
-      213: -3313187867891883797
-    second: UI-Sprite-Altas_197
-  - first:
-      213: -2549002120943878019
-    second: UI-Sprite-Altas_198
-  - first:
-      213: -5052903415491012146
-    second: UI-Sprite-Altas_199
-  - first:
-      213: -3140912727469376740
-    second: UI-Sprite-Altas_200
-  - first:
-      213: -5136582403545791456
-    second: UI-Sprite-Altas_201
-  - first:
-      213: -3798075857495393602
-    second: UI-Sprite-Altas_202
-  - first:
-      213: -995762876464103841
-    second: UI-Sprite-Altas_203
-  - first:
-      213: -7713587920303652224
-    second: UI-Sprite-Altas_204
-  - first:
-      213: -3304122836499440546
-    second: UI-Sprite-Altas_205
-  - first:
-      213: 6161182315340290465
-    second: UI-Sprite-Altas_206
-  - first:
-      213: -3077041522954987288
-    second: UI-Sprite-Altas_207
-  - first:
-      213: -5942213206554056699
-    second: UI-Sprite-Altas_208
-  - first:
-      213: 2847237862173275178
-    second: UI-Sprite-Altas_209
-  - first:
-      213: -2893461866511326658
-    second: UI-Sprite-Altas_210
-  - first:
-      213: -6970541691447380176
-    second: UI-Sprite-Altas_211
-  - first:
-      213: 4990183885692164591
-    second: UI-Sprite-Altas_212
-  - first:
-      213: -6977868689923966575
-    second: UI-Sprite-Altas_213
-  - first:
-      213: -5472845247126418017
-    second: UI-Sprite-Altas_214
-  - first:
-      213: -6147860189353268081
-    second: UI-Sprite-Altas_215
-  - first:
-      213: -3475213594874217823
-    second: UI-Sprite-Altas_216
-  - first:
-      213: 4020636266788577510
-    second: UI-Sprite-Altas_217
-  - first:
-      213: 3744037474810370319
-    second: UI-Sprite-Altas_218
-  - first:
-      213: 5842593247744285981
-    second: UI-Sprite-Altas_219
-  - first:
-      213: 1138299835420380821
-    second: UI-Sprite-Altas_220
-  - first:
-      213: 2821622288982914850
-    second: UI-Sprite-Altas_221
-  - first:
-      213: 2294027190401143420
-    second: UI-Sprite-Altas_222
-  - first:
-      213: 533025106552713231
-    second: UI-Sprite-Altas_223
-  - first:
-      213: 8869479281927052043
-    second: UI-Sprite-Altas_224
-  - first:
-      213: -1992601650253410750
-    second: UI-Sprite-Altas_225
-  - first:
-      213: 1526833613990259078
-    second: UI-Sprite-Altas_226
-  - first:
-      213: 4690737989318981455
-    second: UI-Sprite-Altas_227
-  - first:
-      213: 8767418157324762228
-    second: UI-Sprite-Altas_228
-  - first:
-      213: 5795782153360720751
-    second: UI-Sprite-Altas_229
-  - first:
-      213: -2105616412800206353
-    second: UI-Sprite-Altas_230
-  - first:
-      213: -5519248983895078757
-    second: UI-Sprite-Altas_231
-  - first:
-      213: 5678661156161897784
-    second: UI-Sprite-Altas_232
-  - first:
-      213: -7054750238887461615
-    second: UI-Sprite-Altas_233
-  - first:
-      213: -6976316268930116406
-    second: UI-Sprite-Altas_234
-  - first:
-      213: -2727901890466224602
-    second: UI-Sprite-Altas_235
-  - first:
-      213: -796190595216201893
-    second: UI-Sprite-Altas_236
-  - first:
-      213: 3698432458384013953
-    second: UI-Sprite-Altas_237
-  - first:
-      213: 2021301802772285783
-    second: UI-Sprite-Altas_238
-  - first:
-      213: 6779283106417701287
-    second: UI-Sprite-Altas_239
-  - first:
-      213: 7467270862095873547
-    second: UI-Sprite-Altas_240
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -944,19 +245,19 @@ TextureImporter:
       name: UI-Sprite-Altas_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1673
-        width: 380
-        height: 355
+        x: 763
+        y: 1858
+        width: 130
+        height: 152
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26cbf407e9131d390800000000000000
-      internalID: -7795394923442750366
+      spriteID: fe0d881fccaa77c10800000000000000
+      internalID: 2051295952492876015
       vertices: []
       indices: 
       edges: []
@@ -965,19 +266,61 @@ TextureImporter:
       name: UI-Sprite-Altas_1
       rect:
         serializedVersion: 2
-        x: 439
-        y: 1707
-        width: 242
-        height: 201
+        x: 1349
+        y: 1894
+        width: 80
+        height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8523d8051e8a3de0800000000000000
-      internalID: -1352612517077899892
+      spriteID: cbd4101d4ba259740800000000000000
+      internalID: 5158075904311774652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_2
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1872
+        width: 554
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce050456358a6bb0800000000000000
+      internalID: -4941991172701352255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_3
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 1766
+        width: 334
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab37be7d2e8a2730800000000000000
+      internalID: 3975145947158494127
       vertices: []
       indices: 
       edges: []
@@ -986,19 +329,124 @@ TextureImporter:
       name: UI-Sprite-Altas_4
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 1691
-        width: 332
-        height: 256
+        x: 954
+        y: 1740
+        width: 378
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6b5f7a5bc5c566e0800000000000000
-      internalID: -1844850995151021201
+      spriteID: 2267781211d770280800000000000000
+      internalID: -9077149011411503582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_5
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 1793
+        width: 13
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02a80c489455a330800000000000000
+      internalID: 3721473680178979339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_6
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 1643
+        width: 175
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9c12093d7e99f60800000000000000
+      internalID: 8041713505488980392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_7
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 1643
+        width: 179
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f59c97dea0213100800000000000000
+      internalID: 85885803210511862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_8
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 1634
+        width: 179
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93d99ad5cd2cf4e0800000000000000
+      internalID: -1946630611131575393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_9
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1543
+        width: 433
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954abdff492970a60800000000000000
+      internalID: 7640236461502735449
       vertices: []
       indices: 
       edges: []
@@ -1007,19 +455,355 @@ TextureImporter:
       name: UI-Sprite-Altas_10
       rect:
         serializedVersion: 2
-        x: 716
-        y: 1732
-        width: 298
-        height: 151
+        x: 950
+        y: 1611
+        width: 379
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6a05a4bfbcda6da0800000000000000
-      internalID: -5950701241689109909
+      spriteID: bddc2f1c3a05d7140800000000000000
+      internalID: 4719016648817954267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_11
+      rect:
+        serializedVersion: 2
+        x: 1409
+        y: 1629
+        width: 27
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4797fee0d5aefc000800000000000000
+      internalID: 58523005582539124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_12
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1307
+        width: 605
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a110d89fd118800800000000000000
+      internalID: 612803981948820111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_13
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1282
+        width: 292
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e33be90e7ffddbc0800000000000000
+      internalID: -3756565597359754272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_14
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 1308
+        width: 288
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f87af55e076a8450800000000000000
+      internalID: 6091794757241698547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_15
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 1324
+        width: 276
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe9a95a014098150800000000000000
+      internalID: 5875231658425884415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_16
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 1318
+        width: 288
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fdd603cf776f320800000000000000
+      internalID: 2591390560626270104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_17
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1088
+        width: 605
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36c3b44203c9cfa0800000000000000
+      internalID: -5779874232243337668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_18
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 950
+        width: 292
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda125e9bdeaf7310800000000000000
+      internalID: 1405033867040135901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_19
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 950
+        width: 292
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4b0f5b75f462e50800000000000000
+      internalID: 6784197126813431036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_20
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 950
+        width: 292
+        height: 325
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994dcb75058708250800000000000000
+      internalID: 5944883794593764505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_21
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 857
+        width: 645
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff874c503270f3750800000000000000
+      internalID: 6286751451834513663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_22
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 526
+        width: 902
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5be79b0b425e2df0800000000000000
+      internalID: -203134450914563234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_23
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 660
+        width: 600
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87659ffef55cfdca0800000000000000
+      internalID: -5989851963540810120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_24
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 504
+        width: 450
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b2931f95d78ef20800000000000000
+      internalID: 3452146939632102239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_25
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 493
+        width: 188
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80b6d4e0a7914d70800000000000000
+      internalID: 9025661845517021322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_26
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 336
+        width: 195
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc4834376dfb2960800000000000000
+      internalID: 7578429417680555188
       vertices: []
       indices: 
       edges: []
@@ -1028,19 +812,61 @@ TextureImporter:
       name: UI-Sprite-Altas_27
       rect:
         serializedVersion: 2
-        x: 1416
-        y: 1691
-        width: 274
-        height: 206
+        x: 1034
+        y: 532
+        width: 11
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0da236a51ed260d00800000000000000
-      internalID: 938488018260667088
+      spriteID: 3b2f6d7975cea2a60800000000000000
+      internalID: 7650186777995965107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_28
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 367
+        width: 459
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b1abae5ba884740800000000000000
+      internalID: 5136507888947829641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_29
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 278
+        width: 318
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30a9337f95c95fd0800000000000000
+      internalID: -2352632041700745157
       vertices: []
       indices: 
       edges: []
@@ -1049,19 +875,19 @@ TextureImporter:
       name: UI-Sprite-Altas_30
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1307
-        width: 380
-        height: 355
+        x: 1079
+        y: 335
+        width: 5
+        height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15eb932bd039ad320800000000000000
-      internalID: 2583539023284387409
+      spriteID: ecdfa2c571a8ab4f0800000000000000
+      internalID: -812184949851750962
       vertices: []
       indices: 
       edges: []
@@ -1070,19 +896,19 @@ TextureImporter:
       name: UI-Sprite-Altas_31
       rect:
         serializedVersion: 2
-        x: 426
-        y: 1343
-        width: 286
-        height: 284
+        x: 1082
+        y: 60
+        width: 331
+        height: 298
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54032d50c214d2c30800000000000000
-      internalID: 4336193673559683141
+      spriteID: 1cfaab81e8c7ebd70800000000000000
+      internalID: 9060816450058104769
       vertices: []
       indices: 
       edges: []
@@ -1091,19 +917,19 @@ TextureImporter:
       name: UI-Sprite-Altas_32
       rect:
         serializedVersion: 2
-        x: 650
-        y: 1592
-        width: 72
-        height: 67
+        x: 1006
+        y: 302
+        width: 6
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b62a9c011643ecaa0800000000000000
-      internalID: -6138911650561285525
+      spriteID: d7d9e024535c9edd0800000000000000
+      internalID: -2456215289221702275
       vertices: []
       indices: 
       edges: []
@@ -1112,19 +938,19 @@ TextureImporter:
       name: UI-Sprite-Altas_33
       rect:
         serializedVersion: 2
-        x: 1338
-        y: 1366
-        width: 208
-        height: 235
+        x: 38
+        y: 173
+        width: 83
+        height: 117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d801ad18205e7670800000000000000
-      internalID: 8538350076767045844
+      spriteID: 6a58bc4fa62612f20800000000000000
+      internalID: 3396103805527098790
       vertices: []
       indices: 
       edges: []
@@ -1133,19 +959,19 @@ TextureImporter:
       name: UI-Sprite-Altas_34
       rect:
         serializedVersion: 2
-        x: 1583
-        y: 1366
-        width: 213
-        height: 228
+        x: 229
+        y: 136
+        width: 601
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0541aad89455ec110800000000000000
-      internalID: 1283056718244877392
+      spriteID: 11407d29ce4029a50800000000000000
+      internalID: 6526284224135627793
       vertices: []
       indices: 
       edges: []
@@ -1154,19 +980,19 @@ TextureImporter:
       name: UI-Sprite-Altas_35
       rect:
         serializedVersion: 2
-        x: 1815
-        y: 1362
-        width: 215
-        height: 238
+        x: 770
+        y: 281
+        width: 8
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82f9f2dda160ef0a0800000000000000
-      internalID: -6846027671106773208
+      spriteID: 25af3324c5a4361c0800000000000000
+      internalID: -4511680641586955694
       vertices: []
       indices: 
       edges: []
@@ -1175,19 +1001,19 @@ TextureImporter:
       name: UI-Sprite-Altas_36
       rect:
         serializedVersion: 2
-        x: 765
-        y: 1447
-        width: 530
-        height: 73
+        x: 949
+        y: 206
+        width: 92
+        height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec7d2d7ce2dd9c370800000000000000
-      internalID: 8343442977671272398
+      spriteID: 3ed11ad7d8968b280800000000000000
+      internalID: -9027349396645143069
       vertices: []
       indices: 
       edges: []
@@ -1196,19 +1022,19 @@ TextureImporter:
       name: UI-Sprite-Altas_37
       rect:
         serializedVersion: 2
-        x: 651
-        y: 1308
-        width: 71
-        height: 67
+        x: 879
+        y: 261
+        width: 7
+        height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89065371d7b29b720800000000000000
-      internalID: 2862366854430941336
+      spriteID: 6843928ecba281370800000000000000
+      internalID: 8293425704640001158
       vertices: []
       indices: 
       edges: []
@@ -1217,10 +1043,136 @@ TextureImporter:
       name: UI-Sprite-Altas_38
       rect:
         serializedVersion: 2
-        x: 1577
-        y: 1362
-        width: 32
-        height: 7
+        x: 139
+        y: 197
+        width: 84
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c62761b580008e0800000000000000
+      internalID: -1729373069598626673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_39
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 175
+        width: 85
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29ecb8d0e6cd4820800000000000000
+      internalID: 2904196003735071018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_40
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 62
+        width: 558
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f8b4ec70019b060800000000000000
+      internalID: 6969619524044427157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_41
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 123
+        width: 79
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2530c0c4665516a0800000000000000
+      internalID: -6479177498172050134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_42
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 150
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b552ca22da9018960800000000000000
+      internalID: 7602368285193807195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_43
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 58
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476432bdbea9b40b0800000000000000
+      internalID: -5743326561996421516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_44
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 1859
+        width: 131
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1228,8 +1180,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a79694a726d81c180800000000000000
-      internalID: -9096834318213748358
+      spriteID: 6f53e0d8101cfb750800000000000000
+      internalID: 6322984614257112566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_45
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1859
+        width: 130
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d138004e5b66b70800000000000000
+      internalID: 8891994505155386694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI-Sprite-Altas_46
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 1859
+        width: 136
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f309cf38cf6145b40800000000000000
+      internalID: 5427988724690227263
       vertices: []
       indices: 
       edges: []

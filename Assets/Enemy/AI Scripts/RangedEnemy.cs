@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 public class RangedEnemy : MonoBehaviour
 {
-    //June 5, 2021
-    //Most Recent Change: enemies cannot take damage more then once every 0.5 seconds
+    //June 9, 2021
+    //Most Recent Change: Clowns raycast now targets player so that regardless of elevation of player/clown enemy will still attack(though attacks need to be rotated towards player)
     #region Variables
 
     [Header("Essentials")]
@@ -20,8 +20,9 @@ public class RangedEnemy : MonoBehaviour
     public Rigidbody rb;
     public Transform target;
     [SerializeField] private GameObject ragdoll;
-    [SerializeField] Rigidbody projectilePrefab;
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform projectileSpawnPoint;
+    private Vector3 playerDirection;
     [SerializeField] float attackTimer = 0;
     private bool enemyDissolveIn = false;
 
@@ -62,7 +63,9 @@ public class RangedEnemy : MonoBehaviour
     //TakeDamage Cooldown
     private float damageInterval = 0;
     private bool canTakeDamage = true;
-    private float takeDamageCooldown = .5f;
+    private float takeDamageCooldown = .8f;
+
+    public new AudioSource audio;
 
     IEnumerator Stun()
     {
@@ -109,12 +112,20 @@ public class RangedEnemy : MonoBehaviour
         #region Get Components
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        if(projectilePrefab == null)
+        {
+            agent.enabled = false;
+        }
         eAnim = gameObject.GetComponent<Animator>();
+
         hpBar = transform.Find("Clown/Canvas/Enemy HP Bar").GetComponent<Image>();
 
         Player = GameObject.FindGameObjectWithTag("Player");
         target = Player.transform;
         cm = Player.GetComponent<CharacterMechanics>();
+
+        audio = this.GetComponent<AudioSource>();
+
         #endregion
 
         #region default values
@@ -145,7 +156,8 @@ public class RangedEnemy : MonoBehaviour
             Patrol();
         }
 
-
+        hpBar.enabled = false;
+        //abilityCollider.enabled = false;
         #endregion
         if (isStationary)
         {
@@ -163,7 +175,23 @@ public class RangedEnemy : MonoBehaviour
         //    Debug.Log("Enemy has lost 1 hp");
         //    takeDamage(1);
         //}
+        //Attempt at making hp bar rotate with player
+        //if (hpBar.isActiveAndEnabled)
+        //{
+        //    Vector3 hpLook = target.position;
 
+        //    hpLook.x = 0;
+        //    Vector3 hpPos = hpBar.transform.position;
+        //    hpPos.x = 0;
+        //    //hpBar.transform.LookAt(hpLook);
+        //    hpBar.transform.TransformDirection(hpLook);
+        //    hpBar.transform.rotation = Quaternion.Euler(hpLook - hpPos);
+
+        //    //targetPosition = Player.transform.position;
+        //    //Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+        //    //float str = rotationSpeed * Time.deltaTime;
+        //    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+        //}
         if (!enemyDissolveIn && !death)
         {
             gameObject.GetComponent<VFXenemies>().spawnIn = true;
@@ -177,15 +205,15 @@ public class RangedEnemy : MonoBehaviour
             if(myEnemyClown == EnemyState.Chase || myEnemyClown == EnemyState.Attack)
             {
                 //To ensure spam basic attack damage bug isn't happening / hammersmashaoe works
-                if (cm.isUsingAbilities)
-                {
-                    //Debug.Log("Big Bear using abilities");
-                    abilityCollider.enabled = true;
-                }
-                else
-                {
-                    abilityCollider.enabled = false;
-                }
+                //if (cm.isUsingAbilities)
+                //{
+                //    //Debug.Log("Big Bear using abilities");
+                //    abilityCollider.enabled = true;
+                //}
+                //else
+                //{
+                //    abilityCollider.enabled = false;
+                //}
             }
             Vector3 targetPosition = agent.destination;
             targetPosition.y = transform.position.y;
@@ -207,7 +235,11 @@ public class RangedEnemy : MonoBehaviour
                 }
                 else
                 {
-                    eAnim.SetBool("PlayerSpotted", true);
+                    if(projectilePrefab != null)
+                    {
+                        eAnim.SetBool("PlayerSpotted", true);
+                    }
+                    
                     //if (Vector3.Distance(target.position, gameObject.transform.position) < attackRange)
                     //{
                     //    myEnemyClown = EnemyState.Chase;
@@ -225,7 +257,7 @@ public class RangedEnemy : MonoBehaviour
                 }
             }
             //IsStationary
-            else
+            else if(projectilePrefab != null)
             {
                 rb.isKinematic = true;
                 if (Vector3.Distance(Player.transform.position, gameObject.transform.position) <= attackRange)
@@ -240,10 +272,25 @@ public class RangedEnemy : MonoBehaviour
                     Attack();
                 }
             }
+
+            targetPosition = Player.transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
             float str = rotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
             //transform.LookAt(targetPosition);
+        }
+        //AgentDisabled
+        else
+        {
+            if (projectilePrefab == null)
+            {
+                rb.constraints = RigidbodyConstraints.FreezePosition;
+            }
+            Vector3 targetPosition = Player.transform.position;
+            targetPosition.y = transform.position.y;
+            Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+            float str = rotationSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
         }
         #endregion
     }
@@ -269,7 +316,12 @@ public class RangedEnemy : MonoBehaviour
     {
         if (canTakeDamage)
         {
-            //Debug.Log("Clown Damage Taken: " + dmg);
+            if (!hpBar.isActiveAndEnabled)
+            {
+                hpBar.enabled = true;
+            }
+            EnemyOnHitSFX();
+            Debug.Log("Clown Damage Taken: " + dmg + "Current TIme:" + Time.time);
             agent.isStopped = true;
             hp -= dmg;
             canTakeDamage = false;
@@ -295,9 +347,9 @@ public class RangedEnemy : MonoBehaviour
         //KNOCKBACK
         // Gets the difference between enemy and player position
         // To knockback enemy away from player
-        rb.isKinematic = false;
+        //rb.isKinematic = false;
         //agent.enabled = false;
-        rb.AddForce(-transform.forward * knockDistanceModifier);
+        //rb.AddForce(-transform.forward * knockDistanceModifier);
         //rb.AddForce(transform.up * knockHeightModifier);
 
         Debug.Log("Knockback");
@@ -344,7 +396,7 @@ public class RangedEnemy : MonoBehaviour
             takeDamage(35);
             StartCoroutine(Stun());
 
-            if (rb)
+            if (rb && !isStationary)
             {
                 AnimStagger();
                 Vector3 direction = transform.position - collision.transform.position;
@@ -378,19 +430,23 @@ public class RangedEnemy : MonoBehaviour
 
                 takeDamage(10);
 
-                if (rb)
+                if (rb && !isStationary)
                 {
-                    basicStaggerCounter++;
-                    if(basicStaggerCounter >= attackStaggerCount)
-                    {
-                        basicStaggerCounter = 0;
-                        AnimStagger();
-                    }
+
                     
                     Vector3 direction = transform.position - collision.transform.position;
                     direction.y = 0;
 
                     rb.AddForce(direction.normalized * basicKnockbackForce, ForceMode.Impulse);
+                }
+                if (rb)
+                {
+                    basicStaggerCounter++;
+                    if (basicStaggerCounter >= attackStaggerCount)
+                    {
+                        basicStaggerCounter = 0;
+                        AnimStagger();
+                    }
                 }
 
                 if (combatDebug)
@@ -409,7 +465,7 @@ public class RangedEnemy : MonoBehaviour
 
                 takeDamage(4);
 
-                if (rb)
+                if (rb && !isStationary)
                 {
                     AnimStagger();
                     Vector3 direction = transform.position - collision.transform.position;
@@ -435,7 +491,7 @@ public class RangedEnemy : MonoBehaviour
 
             takeDamage(7);
 
-            if (rb)
+            if (rb && !isStationary)
             {
                 AnimStagger();
                 Vector3 direction = transform.position - collision.transform.position;
@@ -491,28 +547,58 @@ public class RangedEnemy : MonoBehaviour
     //Ranged Attack 
     private void Attack()
     {
-        //Two raycasts to ensure clown will attack even if its not at equal height as player
-        RaycastHit highHit;
-        RaycastHit lowHit;
-        Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.TransformDirection(Vector3.forward), out lowHit);
-        Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.TransformDirection(Vector3.forward), out highHit);
+        //Raycast to ensure clown will attack even if its not at equal height as player
+        RaycastHit Hit;
+        Vector3 rayLook = transform.position;
+        rayLook.y += 2.5f;
+        Vector3 rayTarget = target.position;
 
-        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), transform.TransformDirection(Vector3.forward) * 20);
-        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.TransformDirection(Vector3.forward) * 20);
+        playerDirection = rayTarget - rayLook;
+        Physics.Raycast(rayLook, playerDirection, out Hit);
+        Debug.DrawRay(rayLook, playerDirection, Color.red);
+
         if (Time.time - attackTimer > 1.0f)
         {
-            if(lowHit.collider.tag == "Player" || highHit.collider.tag == "Player")
+            if(Hit.collider.tag == "Player")
             {
                 eAnim.SetTrigger("Attack");
                 attackTimer = Time.time;
             }
         }
+
+        //RaycastHit sphereHit;
+        //Physics.SphereCast(transform.position, 10, transform.TransformDirection(Vector3.forward), out sphereHit);
+        //if(sphereHit.collider.tag == "Player")
+        //{
+        //    playerInRange = true;
+        //}
+        //else
+        //{
+        //    playerInRange = false;
+        //}
+
+        //Collider[] hitColliders = Physics.OverlapSphere(transform.position, 15);
+        //Collider[] hitcoll = Physics.OverlapBox(transform.position, transform.localScale * 5, Quaternion.identity, playerMask);
+        //foreach (var hitCollider in hitColliders)
+        //{
+        //    if (hitCollider.CompareTag("Player"))
+        //    {
+        //        playerInRange = true;
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        playerInRange = false;
+        //    }
+        //}
+
+        //Physics.SphereCast()
     }
 
     // Used for enemy animations and patrolling between waypoints
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogWarning("Clown Ontrigger");
+        //Debug.LogWarning("Clown Ontrigger");
         // During patrol alternate going between Waypoint1 and Waypoint2
         // On collision with waypoint sets other as destination
         if (myEnemyClown == EnemyState.Patrol)
@@ -543,7 +629,7 @@ public class RangedEnemy : MonoBehaviour
             takeDamage(35);
             StartCoroutine(Stun());
 
-            if (rb)
+            if (rb && !isStationary)
             {
                 AnimStagger();
                 Vector3 direction = transform.position - other.transform.position;
@@ -562,7 +648,16 @@ public class RangedEnemy : MonoBehaviour
             if (cm.isAttacking)
             {
                 //Big Bear: Basic Damage
-                takeDamage(5);
+                takeDamage(10);
+                if (rb)
+                {
+                    basicStaggerCounter++;
+                    if (basicStaggerCounter >= attackStaggerCount)
+                    {
+                        basicStaggerCounter = 0;
+                        AnimStagger();
+                    }
+                }
             }
             
 
@@ -570,7 +665,7 @@ public class RangedEnemy : MonoBehaviour
             {
                 Debug.Log("Hit by whirlwind");
                 //Big Bear: Whirlwind Damage
-                takeDamage(20);
+                takeDamage(25);
             }
         }
     }
@@ -580,12 +675,19 @@ public class RangedEnemy : MonoBehaviour
     {
         if (projectilePrefab)
         {
-            Rigidbody rb = Instantiate(projectilePrefab,
-                projectileSpawnPoint.position,
-                projectileSpawnPoint.rotation) as Rigidbody;
 
-            rb.AddForce(transform.forward * projectilePrefab.GetComponent<Projectiles>().projectileSpeed, ForceMode.Impulse);
+            GameObject projectile = Instantiate(projectilePrefab, new Vector3(projectileSpawnPoint.position.x, projectileSpawnPoint.position.y + .75f, projectileSpawnPoint.position.z), projectileSpawnPoint.rotation);
+            Vector3 projPlayerDirection = new Vector3(playerDirection.x, playerDirection.y += 2.5f, playerDirection.z);
+
+            projectile.GetComponent<Rigidbody>().AddForce(projPlayerDirection.normalized * projectilePrefab.GetComponent<Projectiles>().projectileSpeed, ForceMode.Impulse);
         }
+    }
+
+    public void EnemyOnHitSFX(float volume = 1f)
+    {
+        //Debug.Log("Carny Hit Sound");
+        audio.PlayOneShot((AudioClip)Resources.Load("Body Hit"));
+        audio.volume = volume;
     }
     #endregion
 }

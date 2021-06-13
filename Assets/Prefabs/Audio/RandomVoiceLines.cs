@@ -40,6 +40,12 @@ public class RandomVoiceLines : MonoBehaviour
 
     }
 
+    public void Fortuneteller(float volume = 1f)
+    {
+        _as.clip = voiceLines[Random.Range(0, voiceLines.Length)];
+        _as.PlayOneShot(_as.clip);
+    }
+
     public void Kill()
     {
         Destroy(gameObject);

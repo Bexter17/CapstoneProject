@@ -63,10 +63,10 @@ ModelImporter:
     indexFormat: 0
     secondaryUVAngleDistortion: 30
     secondaryUVAreaDistortion: 30
-    secondaryUVHardAngle: 60
+    secondaryUVHardAngle: 50
     secondaryUVMarginMethod: 1
     secondaryUVMinLightmapResolution: 50
-    secondaryUVMinObjectScale: 50
+    secondaryUVMinObjectScale: 1000
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:

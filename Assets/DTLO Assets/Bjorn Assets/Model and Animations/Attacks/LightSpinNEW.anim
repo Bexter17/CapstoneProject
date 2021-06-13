@@ -72336,20 +72336,20 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.06666667
+  - time: 0.1
+    functionName: ThirdAttackSFX
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: e7ecef23217700d469db0f2e1f364179,
+      type: 3}
+    floatParameter: 1
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.23333333
     functionName: HammerTrail
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.1
-    functionName: ThirdAttackSFX
-    data: 
-    objectReferenceParameter: {fileID: 11500000, guid: d7f4848775aa2384cb82dac9103724bc,
-      type: 3}
-    floatParameter: 1
-    intParameter: 0
+    intParameter: 3
     messageOptions: 0
   - time: 0.26666668
     functionName: TripleAttackThird
@@ -72357,13 +72357,6 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
-    messageOptions: 0
-  - time: 1.1666666
-    functionName: DestroyVFX
-    data: VFX_Bjorn
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 1
-    intParameter: 0
     messageOptions: 0
   - time: 1.197537
     functionName: AttackEnd

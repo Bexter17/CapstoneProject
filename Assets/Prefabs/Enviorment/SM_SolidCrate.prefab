@@ -130,10 +130,10 @@ MonoBehaviour:
   destroyedVersion: {fileID: 3855633318553519225, guid: ea93663fdb8b6664e844073f6490ec2d,
     type: 3}
   pickUps:
-  - {fileID: 8462015923751488799, guid: 4999fa34e3666cc4288089660f842462, type: 3}
+  - {fileID: 120028791825108862, guid: ec5e733067e68834b8ad461aec48e50c, type: 3}
   - {fileID: 7743928427607976405, guid: 3feb6bbcd1f3abc49b7863b8ca3a1c78, type: 3}
-  - {fileID: 7433836673992892121, guid: 06a6d602e7141d8479eff27c9e9c3ad9, type: 3}
-  - {fileID: 4107037681036373853, guid: 1e721a0221bd0f44cb63367d8c0f26b7, type: 3}
+  - {fileID: 5868971691392994630, guid: 06a6d602e7141d8479eff27c9e9c3ad9, type: 3}
+  - {fileID: 5868971691392994630, guid: 06a6d602e7141d8479eff27c9e9c3ad9, type: 3}
   index: 0
   waitTime: 2
   hammerAnimations: {fileID: 0}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [SerializeField] bool checkpointDebug;
+
     void Start()
     {
     }
@@ -13,7 +15,9 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("checkpoint activated");
+            if(checkpointDebug)
+            Debug.Log("checkpoint activated at " + this.transform.name);
+
             GameManager.Instance.UpdateCheckpoint(gameObject);
         }
     }

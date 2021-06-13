@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6240309214195202760}
   - component: {fileID: 7004737615802709357}
   - component: {fileID: 5102900493322830247}
-  - component: {fileID: 6140628140977453609}
   m_Layer: 0
   m_Name: Rock_2
   m_TagString: Untagged
@@ -82,16 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6140628140977453609
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760422587475681394}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.87251854
-  m_Center: {x: -2.4480016, y: 1.1768353, z: -11.803816}

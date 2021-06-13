@@ -67405,8 +67405,7 @@ AnimationClip:
   - time: 0.53333336
     functionName: ThrowSFX
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: d7f4848775aa2384cb82dac9103724bc,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 1
     intParameter: 0
     messageOptions: 0

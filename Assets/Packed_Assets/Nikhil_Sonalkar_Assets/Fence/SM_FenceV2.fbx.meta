@@ -2,13 +2,21 @@ fileFormatVersion: 2
 guid: 25784ac3b8e162c4d90b9b64e9d1898f
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #50
-    second: {fileID: 2100000, guid: 59113503b63122544ae8ef0e816eb66b, type: 2}
+      name: Planks
+    second: {fileID: 2100000, guid: 13603017c36728c4ba7796e39f4fbf2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodChunk
+    second: {fileID: 2100000, guid: 0e6aacdd23c148e41b1af2ee3f3b0df0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -50,7 +58,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

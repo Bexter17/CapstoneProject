@@ -14,34 +14,28 @@ public class VFXManager : MonoBehaviour
     public GameObject aboveBjorn;
     public GameObject bjornCOG;
     public GameObject hammerSmashSpawn;
-/*    public GameObject rayCastFrom;*/
+    public GameObject VFX_Storage;
+    /*    public GameObject rayCastFrom;*/
     public LayerMask ignoreRC;
     [Space(order = 1)]
 
     public SkinnedMeshRenderer skinnedMesh;
     public GameObject hammer;
-    Material hammerMaterial; 
+    Material hammerMaterial;
 
     //VFX Prefabs are contained here
     public VFXAssetPlayer playerVFXData;
 
-    bool hammerGlowSmash = false;
-    bool hammerGlowSpin = false;
-    bool hammerGlowCharge = false;
+    bool hammerGlowIn = false;
+    bool hammerGlowOut = false;
 
-    float glowValueSmash = 0;
-    float glowValueSpin = 0;
-    float glowValueCharge = 0;
+    float glowIntensity = 0;
+    float timeUntilDeath = 4;
 
     public bool tookDamage = false;
     public Vector3 collision = Vector3.zero;
-    //Variables for Collider Detection
 
-
-    /*    //Positions are stored in these variables and these are used for where the VFX will be spawned
-        private Vector3 hammerPos;
-        private Vector3 bjornFeetPos;
-        private Vector3 aboveBjornPos;*/
+    List<GameObject> vfxAlive = new List<GameObject>();
 
     #endregion
 
@@ -53,123 +47,96 @@ public class VFXManager : MonoBehaviour
     #region Position Updates
     void Update()
     {
-        /*        hammerPos = bjornHammerHitBox.transform.position;
-                bjornFeetPos = bjornFeet.transform.position;
-                aboveBjornPos = aboveBjorn.transform.position;*/
+        #region Hammer Glow
 
-        //Vector3 closestToBjorn = bjornFullBody.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-        //collisionDrawCheck(closestToBjorn, 0.1f);
+        if (hammerGlowIn)
+        {
+            HammerGlowing();
+        }
+        else if (hammerGlowOut)
+        {
+            if (hammerMaterial.GetFloat("_smash") == 1)
+            {
+                HammerDeGlow("smash");
+            }
 
-        /*        var ray = new Ray(rayCastFrom.transform.position, rayCastFrom.transform.forward);
-                RaycastHit hit;
-                if(Physics.Raycast(ray, out hit, 100, ignoreRC))
-                {
-                    collision = hit.point;
-                    Debug.DrawRay(rayCastFrom.transform.position, rayCastFrom.transform.forward * 10, Color.blue, 2f);
-                    if (hit.transform.gameObject.CompareTag("Enemy"))
-                    {
-                        Debug.Log(hit.transform.name);
-                    }
+            if (hammerMaterial.GetFloat("_spin") == 1)
+            {
+                HammerDeGlow("spin");
+            }
 
-                }*/
-        //if (hammerGlowSmash)
-        //{
-        //    HammerGlow("smash", true);
-        //} 
-        
-        //if(hammerGlowSpin) 
-        //{
-        //    HammerGlow("spin", true);
-        //}
-        
-        //if(hammerGlowCharge) 
-        //{
-        //    HammerGlow("charge", true);
-        //}
+            if (hammerMaterial.GetFloat("_charge") == 1)
+            {
+                HammerDeGlow("charge");
+            }
+        }
 
-    }
+        #endregion
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(collision, 0.2f);
     }
 
     #endregion
 
-    /*    private void OnCollisionStay(Collision collision)
-        {
-            ContactPoint[] contacts = new ContactPoint[10];
-
-            int numContacts = collision.GetContacts(contacts);
-            for(int index = 0; index < numContacts; index++)
-            {
-                if(Vector3.Distance(contacts[index].point, bjornFullBody.transform.position) < .2f)
-                {
-                    collisionDrawCheck(contacts[index].point, 1f);
-                    Debug.Log("COLLIDED WITH BJORN");
-                }
-            }
-
-        }*/
 
     #region VFX Functions
 
-    /*    void collisionDrawCheck(Vector3 point, float scale)
-        {
-            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.localScale = Vector3.one * scale;
-            sphere.transform.position = point;
-            sphere.transform.parent = transform.parent;
-            sphere.GetComponent<Collider>().enabled = false;
-            Destroy(sphere, 2f);
-        }*/
-
     #region Bjorn VFX
-    void HammerTrail() 
+    void HammerTrail(int attackLayer)
     {
-        InstantiateVFX(playerVFXData.hammerTrailDefault, bjornHammerHitBox.transform);
+        //GameObject hammerTrailClone = CheckForClone(playerVFXData.hammerTrailDefault, bjornFullBody.transform);
+
+        GameObject hammerTrailClone = InstantiateVFX(playerVFXData.hammerTrailDefault, bjornFullBody.transform);
+
+        hammerTrailClone.transform.position = new Vector3(bjornFullBody.transform.position.x, bjornFullBody.transform.position.y + 1f, bjornFullBody.transform.position.z + 0.1f);
+
+        if (attackLayer == 1)
+        {
+            hammerTrailClone.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (attackLayer == 2)
+        {
+            hammerTrailClone.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (attackLayer == 3)
+        {
+            hammerTrailClone.transform.GetChild(2).gameObject.SetActive(true);
+        }
+
+        Destroy(hammerTrailClone, timeUntilDeath);
     }
 
     void HammerTrailSmash()
     {
-        InstantiateVFX(playerVFXData.hammerTrailSmash, bjornHammerHitBox.transform);
-    }
-
-    void AbilityTrail()
-    {
-        InstantiateVFX(playerVFXData.abilityTrail, bjornCOG.transform);
+        InstantiateVFX(playerVFXData.hammerTrailSmash, bjornHammerHitBox.transform, timeUntilDeath);
     }
 
     void TripleAttackFirst(int attackLayer)
     {
-        GameObject tripleFirstClone = CheckForClone(playerVFXData.tripleAttackFirst, aboveBjorn.transform);
+        GameObject tripleFirstClone = InstantiateVFX(playerVFXData.tripleAttackFirst, bjornFullBody.transform);
 
         if (attackLayer == 1)
         {
             //Enable Grow
             tripleFirstClone.transform.GetChild(0).gameObject.SetActive(true);
-        } else if (attackLayer == 2)
+        }
+        else if (attackLayer == 2)
         {
             //Hold Overhead
-            tripleFirstClone.transform.GetChild(1).position = aboveBjorn.transform.position + new Vector3(0,1,0);
+            tripleFirstClone.transform.GetChild(1).position = bjornFullBody.transform.position + new Vector3(0, 4, 0);
             tripleFirstClone.transform.GetChild(1).gameObject.SetActive(true);
-        } else if (attackLayer == 3)
-        {
-/*            //Final Swing Down
-            tripleFirstClone.transform.GetChild(2).position = bjornHammerHitBox.transform.position;
-            tripleFirstClone.transform.GetChild(2).gameObject.SetActive(true);*/
         }
+
+        Destroy(tripleFirstClone, timeUntilDeath);
     }
 
     void TripleAttackSecond()
     {
-
+        InstantiateVFX(playerVFXData.tripleAttackSecond, bjornHammerHitBox.transform, timeUntilDeath);
     }
 
     void TripleAttackThird(int attackLayer)
     {
-        InstantiateVFX(playerVFXData.tripleAttackThird, bjornCOG.transform);
+        InstantiateVFX(playerVFXData.tripleAttackThird, bjornCOG.transform, timeUntilDeath);
 
         if (attackLayer == 1)
         {
@@ -180,119 +147,99 @@ public class VFXManager : MonoBehaviour
 
     void HammerCharge()
     {
-        hammerGlowCharge = true;
-        SetSkinnedMeshAndPlay(playerVFXData.hammerCharge);
+        GlowReset();
+        hammerMaterial.SetFloat("_charge", 1);
+        hammerGlowIn = true;
+        //SkinnedHammerCharge();
+        GameObject clone = InstantiateVFX(playerVFXData.hammerCharge, bjornCOG.transform);
+
+        clone.transform.position += new Vector3(0, 1.5f, -0.5f);
+        Destroy(clone, timeUntilDeath);
     }
 
     void Hammerspin()
     {
-        hammerGlowSpin = true;
-        InstantiateVFX(playerVFXData.hammerSpin, bjornHammerHitBox.transform);
+        GlowReset();
+        hammerMaterial.SetFloat("_spin", 1);
+        hammerGlowIn = true;
+        InstantiateVFX(playerVFXData.hammerSpin, bjornHammerHitBox.transform, timeUntilDeath);
+        //clone.transform.position += new Vector3(0, 0.7f, 0);
     }
 
     void HammerSmash()
     {
-        hammerGlowSmash = true;
+        GlowReset();
+        hammerMaterial.SetFloat("_smash", 1);
+        hammerGlowIn = true;
 
         Vector3 positionOfVFX = new Vector3(hammerSmashSpawn.transform.position.x, hammerSmashSpawn.transform.position.y, hammerSmashSpawn.transform.position.z);
-        Instantiate(playerVFXData.hammerSmash, positionOfVFX, Quaternion.identity);
+        GameObject clone = Instantiate(playerVFXData.hammerSmash, positionOfVFX, Quaternion.identity);
+
+        Destroy(clone, timeUntilDeath);
     }
 
-    void Throw()
+    public void BjornDamageTaken()
     {
-
-    }
-
-    void BjornDamageTaken() {
-        //Calculate where collision occurred in world space
-        // Instatiate an object in world space at that location spawning the fluff VFX
+        // This needs to get called in the character mechanics script in the takeDamage function
+        GameObject clone =  Instantiate(playerVFXData.takeDamage, bjornFullBody.transform.position + new Vector3(0,0.5f,0), bjornFullBody.transform.rotation, VFX_Storage.transform);
+        Destroy(clone, timeUntilDeath);
     }
 
     #endregion
 
-    # region Material VFX
-    
-/*    void HammerGlow(string ability, bool state)
+    #region Material VFX
+
+    void HammerGlow(string ability)
     {
-        float smashMax = 2;
-        float spinMax = 8;
-        float chargeMax = 5;
-        bool glowActive = state;
-
-        Debug.Log(glowActive);
-
-        if (ability.Equals("smash") && glowActive)
+        if (hammerGlowIn)
         {
-
-            glowValueSmash += Time.deltaTime * playerVFXData.glowSpeed;
-            hammerMaterial.SetFloat("_smash", glowValueSmash);
-            if (glowValueSmash >= smashMax)
-            {
-                HammerGlow("smash", false);
-            }
-
-        } else if (ability.Equals("smash") && !glowActive) {
- 
-            glowValueSmash -= Time.deltaTime * playerVFXData.glowSpeed;
-            hammerMaterial.SetFloat("_smash", glowValueSmash);
-
-            if (glowValueSmash <= 0)
-            {
-                glowValueSmash = 0;
-                hammerGlowSmash = false;
-            }
-
-        } 
-
-        if (ability.Equals("spin")) {
-            
-
-            if (glowValueSpin < spinMax)
-            {
-                glowValueSpin += Time.deltaTime * playerVFXData.glowSpeed;
-                hammerMaterial.SetFloat("_spin", glowValueSpin);
-            }
-            else if (glowValueSpin >= spinMax)
-            {
-                glowValueSpin -= Time.deltaTime * playerVFXData.glowSpeed;
-                hammerMaterial.SetFloat("_spin", glowValueSpin);
-
-                if (glowValueSpin <= 0)
-                {
-                    glowValueSpin = 0;
-                    hammerGlowSpin = false;
-                }
-            }
-
-        }
-        
-        if(ability.Equals("charge")) {
-            
-
-            if (glowValueCharge < chargeMax)
-            {
-                glowValueCharge += Time.deltaTime * playerVFXData.glowSpeed;
-                hammerMaterial.SetFloat("_charge", glowValueCharge);
-            }
-            else if (glowValueCharge >= chargeMax)
-            {
-                glowValueCharge -= Time.deltaTime * playerVFXData.glowSpeed;
-                hammerMaterial.SetFloat("_charge", glowValueCharge);
-
-                if (glowValueCharge <= 0)
-                {
-                    glowValueCharge = 0;
-                    hammerGlowCharge = false;
-                }
-            }
-
+            HammerGlowing();
         }
 
-    }*/
+        if (hammerGlowOut)
+        {
+            HammerDeGlow(ability);
+        }
+        Debug.Log(glowIntensity);
+    }
+
+    void HammerGlowing()
+    {
+        glowIntensity += Time.deltaTime * playerVFXData.glowSpeed;
+
+        if (glowIntensity >= 1)
+        {
+            glowIntensity = 1;
+            hammerGlowIn = false;
+            hammerGlowOut = true;
+        }
+
+        hammerMaterial.SetFloat("_intensity", glowIntensity);
+    }
+
+    void HammerDeGlow(string abilityCalled)
+    {
+        glowIntensity -= Time.deltaTime * playerVFXData.glowSpeed;
+
+        if (glowIntensity <= 0)
+        {
+            glowIntensity = 0;
+            hammerMaterial.SetFloat("_" + abilityCalled, 0);
+            hammerGlowOut = false;
+        }
+
+        hammerMaterial.SetFloat("_intensity", glowIntensity);
+    }
+
+    void GlowReset()
+    {
+        glowIntensity = 0;
+        hammerMaterial.SetFloat("_intensity", glowIntensity);
+    }
 
     #endregion
 
-#endregion
+    #endregion
 
     #region VFX Handler Functions
     void VFXToScene(GameObject vfx, Transform location)
@@ -300,14 +247,20 @@ public class VFXManager : MonoBehaviour
         InstantiateVFX(vfx, location);
     }
 
-    public void setDamageTrigger(bool d)
+    public void SetDamageTrigger(bool d)
     {
         tookDamage = d;
     }
 
-    void InstantiateVFX(GameObject vfxObject, Transform objectParented)
+    void InstantiateVFX(GameObject vfxObject, Transform objectParented, float time)
     {
-        Instantiate(vfxObject, objectParented.position, Quaternion.identity, objectParented);
+        GameObject clone = Instantiate(vfxObject, objectParented.position, objectParented.rotation, objectParented);
+        Destroy(clone, time);
+    }
+
+    GameObject InstantiateVFX(GameObject vfxObject, Transform objectParented)
+    {
+        return Instantiate(vfxObject, objectParented.position, objectParented.rotation, objectParented);
     }
 
     GameObject FindVFXInScene(string vfxName)
@@ -320,7 +273,7 @@ public class VFXManager : MonoBehaviour
     {
         if (FindVFXInScene(CloneName(originalVFX)) == null)
         {
-            VFXToScene(originalVFX, location);
+            InstantiateVFX(originalVFX, location, 4);
             return GameObject.Find(originalVFX.name + "(Clone)");
         }
         else
@@ -333,6 +286,26 @@ public class VFXManager : MonoBehaviour
     {
         return oriPrefabName.name + "(Clone)";
     }
+
+    void VFXToKill()
+    {
+        List<GameObject> copy;
+
+        copy = new List<GameObject>(vfxAlive);
+
+        foreach (GameObject vfx in vfxAlive)
+        {
+            vfxAlive.Remove(vfx);
+        }
+
+        foreach (GameObject vfx in copy)
+        {
+            Destroy(vfx, 2);
+        }
+       
+    }
+
+
     #endregion
 
     #region Other Functions
@@ -344,14 +317,16 @@ public class VFXManager : MonoBehaviour
     * Input: Takes the tag of the vfx tag to be found and destroyed
     * Output: No Output
     */
-    void DestroyVFX(float timeUntilDead)
+    void VFXToPool()
     {
         GameObject[] vfxToDestroy = GameObject.FindGameObjectsWithTag("VFX_Bjorn");
 
         for (int i = 0; i < vfxToDestroy.Length; i++)
         {
-            Destroy(vfxToDestroy[i], timeUntilDead);
+            vfxAlive.Add(vfxToDestroy[i]);
         }
+
+        VFXToKill();
     }
 
     /* Function Name: GatherPSInScene
@@ -360,7 +335,7 @@ public class VFXManager : MonoBehaviour
      * Input: Takes an array of GameObjects of all VFX objects instantiated in the scene at that instance
      * Output: Outputs an array of every Particle System for earch of the VFX Game Objects
      */
-    ParticleSystem[] GatherPSInScene(GameObject[] vfxList)
+    /*    ParticleSystem[] GatherPSInScene(GameObject[] vfxList)
     {
         ParticleSystem[] vfxPS = new ParticleSystem[vfxList.Length];
 
@@ -372,15 +347,17 @@ public class VFXManager : MonoBehaviour
         return vfxPS;
     }
 
-    void SetSkinnedMeshAndPlay(GameObject vfxToSkin)
+    void SkinnedHammerCharge()
     {
-        GameObject vfx = vfxToSkin;
-        ParticleSystem[] ps = new ParticleSystem[5];
+        GameObject vfx = playerVFXData.hammerCharge;
+        ParticleSystem[] ps;
         int index = 0;
 
-        ps = vfx.GetComponentsInChildren<ParticleSystem>();
+        GameObject vfxToSkin = playerVFXData.hammerCharge.transform.GetChild(0).gameObject;
 
-        while(index < ps.Length && ps[index] != null)
+        ps = vfxToSkin.GetComponentsInChildren<ParticleSystem>();
+
+        do
         {
             var psShape = ps[index].shape;
             psShape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
@@ -388,10 +365,32 @@ public class VFXManager : MonoBehaviour
             psShape.skinnedMeshRenderer = skinnedMesh;
 
             index++;
-        }
+        } while (index < ps.Length && ps[index] != null);
 
-        vfx = Instantiate(vfxToSkin, skinnedMesh.transform.position, skinnedMesh.transform.rotation, skinnedMesh.transform);
+        Instantiate(vfx, bjornCOG.transform.position, bjornCOG.transform.rotation, bjornCOG.transform);
     }
+
+    void SkinnedHammerSpin()
+    {
+        GameObject vfx = playerVFXData.hammerSpin;
+        ParticleSystem[] ps;
+        int index = 0;
+
+        ps = vfx.GetComponentsInChildren<ParticleSystem>();
+
+        do
+        {
+            var psShape = ps[index].shape;
+            psShape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
+
+            //psShape.skinnedMeshRenderer = skinnedMesh;
+            psShape.skinnedMeshRenderer = hammer.GetComponent<SkinnedMeshRenderer>();
+
+            index++;
+        } while (index < ps.Length && ps[index] != null);
+
+        Instantiate(vfx, hammer.transform.position, hammer.transform.rotation, hammer.transform);
+    }*/
     #endregion
 
 }

@@ -5,11 +5,25 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    #region Scripts
+
+    AnimController ac;
+
+    CharacterMechanics cm;
+
+    InputBuffer ib;
+
+    AbilitiesCooldown cooldown;
+
+    AimShoot aim;
+
+    InputControl ic;
+
+    #endregion
+
     private bool ThirdPersonCamera = true;
 
     GameObject Player;
-
-    CharacterMechanics cm;
 
     public Image Aimer;
 
@@ -19,6 +33,9 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera vCam1; //Third Person Camera
     [SerializeField]
     public CinemachineVirtualCamera vCam2; //Free Look Camera
+    [SerializeField]
+    public CinemachineVirtualCamera vCam3; //End game camera
+
 
     void Awake()
     {
@@ -31,8 +48,28 @@ public class CameraController : MonoBehaviour
 
         cm = Player.transform.GetComponent<CharacterMechanics>();
 
+        ic = Player.transform.GetComponent<InputControl>();
+
+        #region Components
+
+
+        //controllerList = Input.GetJoystickNames();
+
+        cooldown = GameObject.FindGameObjectWithTag("Abilities").GetComponent<AbilitiesCooldown>();
+
+        //ib = this.transform.GetComponent<InputBuffer>();
+
+        //cm = this.transform.GetComponent<CharacterMechanics>();
+
+        //ac = this.transform.GetComponent<AnimController>();
+
+        //aim = this.transform.GetComponent<AimShoot>();
+
+        #endregion
+
        // vCam2.transform.position = respawnPoint.transform.position;
     }
+    
 
     void Update()
     {
@@ -65,6 +102,16 @@ public class CameraController : MonoBehaviour
         {
             vCam2.Priority = 1;
         }
+
+        if (ic.endGame == true)
+        {
+            vCam3.Priority = 10;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.gameObject.CompareTag("EndCamera");
     }
 
 }

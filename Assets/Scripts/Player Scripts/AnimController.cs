@@ -37,6 +37,13 @@ public class AnimController : MonoBehaviour
 
     [SerializeField] bool animDebug;
 
+    float defaultAnimSpeed;
+
+    float prevAnimSpeed;
+
+    float direction;
+
+
     #endregion
 
     #region Movement
@@ -50,6 +57,10 @@ public class AnimController : MonoBehaviour
     float Speed;
 
     float strafeSpeed;
+
+    [SerializeField] float speedDampening;
+
+    [SerializeField] float strafeDampening;
 
     #endregion
 
@@ -106,6 +117,14 @@ public class AnimController : MonoBehaviour
         animator.applyRootMotion = false;
 
         #endregion
+
+        if (speedDampening == 0)
+            speedDampening = 2f;
+
+        if (strafeDampening == 0)
+            strafeDampening = 2f;
+
+        defaultAnimSpeed = animator.speed;
     }
 
     // Update is called once per frame
@@ -204,11 +223,23 @@ public class AnimController : MonoBehaviour
 
     public void updateValues(bool grounded, bool jumping, bool falling, float speed, float strafe)
     {
+        /*
+        direction = 0.0f;
+        Vector3 axis = Vector3.zero;
+
+        transform.rotation.ToAngleAxis(out direction, out axis);
+
+        Debug.Log("direction: " + direction);
+        Debug.Log("axis: " + axis);
+
+        animator.SetFloat("Direction", direction);
 
         Debug.Log("ALI - Speed: " + speed);
-        Speed = speed;
+        */
 
-        strafeSpeed = strafe;
+        Speed = (speed * 2.0f);
+
+        strafeSpeed = (strafe * 2.0f);
 
         isGrounded = grounded;
 
@@ -337,8 +368,22 @@ public class AnimController : MonoBehaviour
         animator.SetInteger("Counter", 0);
     }
 
-    #region On Anim State Enter
+    #region Pause and Play Animator
 
+    public void pauseAnim()
+    {
+        prevAnimSpeed = animator.speed;
+        animator.speed = 0;
+    }
+
+    public void playAnim()
+    {
+        if(prevAnimSpeed != 0)
+        animator.speed = prevAnimSpeed;
+
+        else
+            animator.speed = defaultAnimSpeed;
+    }
     
 
     #endregion

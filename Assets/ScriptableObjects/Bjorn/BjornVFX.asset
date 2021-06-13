@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737d5dcfe5befef44bb5dacc662ff522, type: 3}
   m_Name: BjornVFX
   m_EditorClassIdentifier: 
-  hammerTrailDefault: {fileID: 3538764934017939424, guid: a5292b3c1bc34fd47a4f4322403ba064,
+  hammerTrailDefault: {fileID: 3538764934017939424, guid: 881b900bf37a2eb47ac5692daecf814d,
     type: 3}
   hammerTrailSmash: {fileID: 4722903869081051432, guid: 67239e39df575e043bf02fd606d0fcec,
     type: 3}
@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   tripleAttackSecond: {fileID: 4851956016851255289, guid: 5dfa2250b4c058349a9c056476140c0a,
     type: 3}
-  tripleAttackThird: {fileID: 755201581105872065, guid: 689b0a14cd410c548ae217083e7e04a7,
+  tripleAttackThird: {fileID: 6355766762589104899, guid: bb46cc03a6051444183d02305cec8292,
     type: 3}
   hammerCharge: {fileID: 5728695581257635361, guid: 846b93b8bf33eee4ebc8aae60b056f76,
     type: 3}
@@ -34,3 +34,4 @@ MonoBehaviour:
   bjornDeath: {fileID: 0}
   takeDamage: {fileID: 7775005493793751106, guid: 3d1c8e27b83c16e499fe8a88df07ad24,
     type: 3}
+  glowSpeed: 1

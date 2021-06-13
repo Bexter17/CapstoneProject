@@ -82,7 +82,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: 0.01
     min: 0
   scatter:
     m_OverrideState: 1

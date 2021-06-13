@@ -51,7 +51,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCheckpoint(GameObject newCheckPoint)
     {
+        Debug.Log("Checkpoint updated");
         currentCheckpoint = Array.IndexOf(checkPoints, newCheckPoint);
+        Debug.Log("newCheckpoint = " + newCheckPoint);
+        Debug.Log("currentCheckpoint = " + currentCheckpoint);
     }
 
     public GameObject GetCurrentCheckpoint()

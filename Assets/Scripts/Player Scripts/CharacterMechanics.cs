@@ -6,6 +6,7 @@ using System;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Random = UnityEngine.Random;
+using Cinemachine;
 
 /*
 
@@ -123,6 +124,8 @@ public class CharacterMechanics : MonoBehaviour
     AimShoot aims;
 
     GameObject Aimshoot;
+
+    CinemachineDollyCart dc;
 
     public SimpleCameraShake ControlCameraShake;
 
@@ -297,6 +300,8 @@ public class CharacterMechanics : MonoBehaviour
 
     [Header("Ranged Ability")]
 
+    [SerializeField] public bool hasRangedWeapon;
+
     [SerializeField] private GameObject RangePrefab;
 
     [SerializeField] private Transform RangedSpawn;
@@ -392,6 +397,8 @@ public class CharacterMechanics : MonoBehaviour
         am = this.transform.GetComponent<AudioManager>();
 
         abilities = GameObject.FindGameObjectWithTag("Abilities").GetComponent<AbilitiesCooldown>();
+
+        dc = GameObject.FindGameObjectWithTag("dc").GetComponent<CinemachineDollyCart>();
 
         //walkingHammerParent = GameObject.FindGameObjectWithTag("Walking Hammer Pos");
 
@@ -660,26 +667,6 @@ public class CharacterMechanics : MonoBehaviour
 
     //Tracks triggers / pickups
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Max Health Pickup")
-        {
-            Destroy(collision.gameObject);
-            Debug.Log("Health Pickup Worked");
-        }
-
-        if (collision.gameObject.tag == "Killbox")   //For Testing Purposes, Can also be implemented in full game as bug failsafe. Can use die() to take away a players life if they fall off or in water.
-        {
-            if (respawnPoint)
-                gameObject.transform.position = respawnPoint.transform.position;
-
-            if (ac)
-                ac.respawn();
-            //die();
-        }
-    }
-
-
     private void OnTriggerEnter(Collider c)
     {
         #region Pickups
@@ -711,28 +698,31 @@ public class CharacterMechanics : MonoBehaviour
         //    StartCoroutine(stopGodmode());
         //}
 
-        if (c.gameObject.tag == "Speed Pickup")
-        {
-            //speed *= speedBoost;
-            Destroy(c.gameObject);
-            // Debug.Log("Speed Boost Applied");
-            //StartCoroutine(stopSpeedBoost());
-            pickupSpeed();
-        }
 
-        if (c.gameObject.tag == "Health Pickup")
-        {
-            Destroy(c.gameObject);
+        //Removed because powerup pickup is called from powerup script
 
-            pickupHealth();
-        }
+        //if (c.gameObject.tag == "Speed Pickup")
+        //{
+        //    //speed *= speedBoost;
+        //    Destroy(c.gameObject);
+        //    // Debug.Log("Speed Boost Applied");
+        //    //StartCoroutine(stopSpeedBoost());
+        //    pickupSpeed();
+        //}
 
-        if (c.gameObject.tag == "Max Health Pickup")
-        {
-            Destroy(c.gameObject);
+        //if (c.gameObject.tag == "Health Pickup")
+        //{
+        //    Destroy(c.gameObject);
 
-            pickupMaxHealth();
-        }
+        //    pickupHealth();
+        //}
+
+        //if (c.gameObject.tag == "Max Health Pickup")
+        //{
+        //    Destroy(c.gameObject);
+
+        //    pickupMaxHealth();
+        //}
 
         #endregion
     }
@@ -747,26 +737,44 @@ public class CharacterMechanics : MonoBehaviour
 
         Destroy(heTemp, healthEffectTimer);
     }
+    //Matt Changes
+    // Powerups were being called twice once in powerup script once in this script
+    // Now Powerup script calls these 3 functions below
 
-    private void pickupHealth()
+    public void pickUpRangedWeapon()
     {
-        currentHealth = maxHealth;
+        hasRangedWeapon = true;
+    }
+
+    public void IncreaseHealth(int hpIncrease)
+    {
+        //takes health increase from power up script
+        currentHealth += hpIncrease;
+        //Ensure current health doesn't exceed max health
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        //Updates healthbar
+        healthBar.SetHealth(currentHealth);
 
         //updateHud();
 
         createHealthEffect();
     }
 
-    private void pickupMaxHealth()
+    public void IncreaseMaxHealth(int maxIncrease)
     {
-        maxHealth += 50;
+        //takes max health increase from power up script
+        maxHealth += maxIncrease;
 
         // updateHud();
     }
 
-    private void pickupSpeed()
+    public void IncreaseSpeed(int speedIncrease)
     {
-        speedBoost += 2;
+        //takes speed boost increase from power up script
+        speedBoost += speedIncrease;
     }
 
     #endregion
@@ -1194,8 +1202,8 @@ public class CharacterMechanics : MonoBehaviour
         if (dashRangePrefab && abilitySpawn)
         {
             dashTemp = Instantiate(dashRangePrefab, abilitySpawn.transform.position, abilitySpawn.transform.rotation, abilitySpawn.transform);
-            //if(combatDebug)
-            Debug.LogError("Dash Zone created!");
+            if(combatDebug)
+            Debug.Log("Dash Zone created!");
         }
 
         else
@@ -1231,7 +1239,7 @@ public class CharacterMechanics : MonoBehaviour
             dashTemp = null;
 
             if (combatDebug)
-                Debug.LogError("Dash Zone destroyed!");
+                Debug.Log("Dash Zone destroyed!");
         }
         if (ib)
             ib.setBufferTrue();
@@ -1549,12 +1557,15 @@ public class CharacterMechanics : MonoBehaviour
     {
         if (!isPlaying)
         {
+            ac.playAnim();
             Cursor.lockState = CursorLockMode.None;
             isPlaying = true;
         }
 
         else if (isPlaying)
         {
+            ac.pauseAnim();
+            ic.resetMovement();
             Cursor.lockState = CursorLockMode.Locked;
             isPlaying = false;
         }
@@ -1574,24 +1585,39 @@ public class CharacterMechanics : MonoBehaviour
         rotationAmount = input.x;
     }
 
-    //Aimed Ranged Attack until we organize the code
+    //Aimed Ranged Attack until we organize better place for the code
     public void Throw()
     {
-        //isCooldown1 = true;
-        //abilityImage1.fillAmount = 1;
-
-        // if (Input.GetMouseButton(1) && Input.GetButtonDown("Fire5"))
-        //{
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit))   //Shoots directly forward from camera wherever it is looking
         {
             Debug.Log(hit.collider.gameObject.name);
         }
+
         ac.throw_();
-        Vector3 lookdirection = hit.point - transform.position;
+        Vector3 lookdirection = Camera.main.transform.forward;
         GameObject bullet = Instantiate(RangePrefab, RangedSpawn.transform.position, Quaternion.LookRotation(lookdirection)) as GameObject;  //Instantiate projectile and then delete after 5 seconds
-        bullet.GetComponent<Rigidbody>().AddForce(lookdirection * 1000);
+        bullet.GetComponent<Rigidbody>().AddForce(lookdirection * 4000);
         Destroy(bullet, 5);
-        //}
     }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("ThrowAxeUnlock"))
+        {
+            hasRangedWeapon = true;
+        }
+
+        if (other.gameObject.CompareTag("endGame"))
+        {
+            Debug.Log("ENDING_CINEMATIC ON");
+            Debug.Log("EndGame = true");
+            Debug.Log("DollyON");
+            ic.endGame = true;
+            dc.m_Speed = 2f;
+        }
+
+    }
+
+
 }

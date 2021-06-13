@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement; 
 
 public class InputControl : MonoBehaviour
 {
     #region Components
 
     CharacterController controller;
+
+    [SerializeField] private GameObject respawnPoint;
+
+    public bool endGame = false;
 
     #endregion
 
@@ -22,6 +27,8 @@ public class InputControl : MonoBehaviour
     AbilitiesCooldown cooldown;
 
     AimShoot aim;
+
+    CameraController cc;
 
     #endregion
 
@@ -38,6 +45,10 @@ public class InputControl : MonoBehaviour
     #endregion
 
     #region Movement
+
+    enum controlType { Controller, Keyboard }
+
+    controlType currentDevice;
 
     [SerializeField] bool invertX;
 
@@ -81,6 +92,10 @@ public class InputControl : MonoBehaviour
     [SerializeField] private float maxJumpPower;
 
     [SerializeField] private float jumpAmplifier;
+
+    [SerializeField] float currentJumpTime;
+
+    [SerializeField] float maxJumpTime;
 
     private float vSpeed = 0;
 
@@ -167,6 +182,8 @@ public class InputControl : MonoBehaviour
 
             aim = this.transform.GetComponent<AimShoot>();
 
+            cc = this.transform.GetComponent<CameraController>();
+
             #endregion
 
             #region Movement
@@ -206,6 +223,9 @@ public class InputControl : MonoBehaviour
             if (accelerationReducer == 0)
                 accelerationReducer = 0.00001f;
 
+            if (maxJumpTime == 0)
+                maxJumpTime = 0.5f;
+
             dashRequested = false;
 
             //Assigns a value to the variable
@@ -243,195 +263,264 @@ public class InputControl : MonoBehaviour
         }
 
         #endregion
+
+        #region Respawn
+
+        //if (!respawnPoint)
+        //    respawnPoint = GameObject.FindGameObjectWithTag("Starting Respawn Point");
+
+        //            respawnPoint = GameManager.Instance.GetCurrentCheckpoint();
+
+        if (GameManager.Instance.HauntedHouse)
+        {
+            respawnPoint = GameObject.FindWithTag("HauntedExit");
+            if (respawnPoint != null)
+            {
+                GameManager.Instance.HauntedHouse = false;
+            }
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().name == "Level_1")
+                respawnPoint = GameManager.Instance.GetCurrentCheckpoint();
+        }
+
+
+        if (respawnPoint)
+        {
+            transform.position = respawnPoint.transform.position;
+        }
+        #endregion
     }
 
     private void FixedUpdate()
     {
-        isGrounded = groundCheck();
-
-        #region Debug
-
-        if (jumpDebug)
-            Debug.Log("jumpDebug: groundCheck returns = " + isGrounded);
-
-        #endregion
-
-        ac.setGrounded(isGrounded);
-
-        currentSpeed = movementSpeed + speedBoost;
-
-        #region Dash
-
-        if(dashRequested)
+        if (cm.isPlaying)
         {
-            accelerationTime += Time.deltaTime;
-
-            currentDashFrame++;
-
-            if (currentDashFrame < maxDashFrames)
+            if (cm.isAlive)
             {
-                // zPosition = initPositionZ + (((initVelocityZ * accelerationTime) + (0.5F * dashAcceleration * (accelerationTime * accelerationTime)) * 0.5f) * 0.01f * 0.000000000000000000000000000000000000000000000000000000000000000000000000001f);
-                //zPosition = initPositionZ + (dashAcceleration / maxDashFrames);
-                zPosition = dashAcceleration / maxDashFrames;
-
-
-                Vector3 newPos = new Vector3(0, 0, zPosition);
-
-                newPos = this.transform.TransformDirection(newPos);
-                
-                controller.Move(newPos);
-
-                if (inputDebug)
+                /*
+                if(currentDevice == controlType.Controller)
                 {
-                    Debug.Log("Dash Frame: " + currentDashFrame + " initPositionZ = " + initPositionZ);
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " initVelocityZ = " + initVelocityZ);
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " zPosition = " + zPosition);
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " accelerationTime = " + accelerationTime);
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " dashAcceleration = " + dashAcceleration);
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " newPos = " + newPos);
-
-                    //  Debug.Log("Dash Frame: " + frame + " + initPositionZ + (initVelocityZ * velocityReducer * accelerationTime");
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " distance traveled = " + (this.transform.position.z - initPositionZ));
-
-                    Debug.Log("Dash Frame: " + currentDashFrame + " initial velocity = " + initVelocityZ);
-
-                  //  Debug.Log("Dash Frame: " + currentDashFrame + " adjusted velocity = " + (initVelocityZ * velocityReducer * accelerationTime * 0.1f));
+                    UnityEngine.InputSystem.InputControlScheme = InputControlScheme.FindControlSchemeForDevices;
                 }
-            }
 
-            else if (currentDashFrame >= maxDashFrames)
-                resetDashParameters();
-
-            //else if (accelerationTime >= maxDashTime)
-                //resetDashParameters();
-        }
-
-        #endregion
-
-        #region Check Jumping and Falling States
-
-        if (!isJumping)
-        {
-            if (!isGrounded)
-            {
-                if (isGrounded)
+                if (currentDevice == controlType.Keyboard)
                 {
-                    land();
 
-                    ac.setFalling(isFalling);
-                    ac.setJumping(isJumping);
                 }
+                */
+
+                if (this.transform.parent)
+                    Debug.Log("Parent: " + this.transform.parent.name);
+
+                isGrounded = groundCheck();
+
+                if (!isGrounded)
+                {
+                    if (this.transform.parent)
+                    {
+                        if (this.transform.parent.tag == "Platform")
+                            this.transform.parent = null;
+                    }
+                }
+
+                #region Debug
+
+                if (jumpDebug)
+                    Debug.Log("jumpDebug: groundCheck returns = " + isGrounded);
+
+                #endregion
+
+                ac.setGrounded(isGrounded);
+
+                currentSpeed = movementSpeed + speedBoost;
+
+                #region Dash
+
+                if (dashRequested)
+                {
+                    accelerationTime += Time.deltaTime;
+
+                    currentDashFrame++;
+
+                    if (currentDashFrame < maxDashFrames)
+                    {
+
+                        // zPosition = initPositionZ + (((initVelocityZ * accelerationTime) + (0.5F * dashAcceleration * (accelerationTime * accelerationTime)) * 0.5f) * 0.01f * 0.000000000000000000000000000000000000000000000000000000000000000000000000001f);
+                        //zPosition = initPositionZ + (dashAcceleration / maxDashFrames);
+                        zPosition = dashAcceleration / maxDashFrames;
+
+                        Vector3 newPos = new Vector3(0, 0, zPosition);
+
+                        newPos = this.transform.TransformDirection(newPos);
+                        if (obstacleCheck(newPos))
+                            controller.Move(newPos);
+
+                        else
+                            Debug.LogWarning("Dash blocked by obstacle!");
+
+                        if (inputDebug)
+                        {
+                            Debug.Log("Dash Frame: " + currentDashFrame + " initPositionZ = " + initPositionZ);
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " initVelocityZ = " + initVelocityZ);
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " zPosition = " + zPosition);
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " accelerationTime = " + accelerationTime);
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " dashAcceleration = " + dashAcceleration);
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " newPos = " + newPos);
+
+                            //  Debug.Log("Dash Frame: " + frame + " + initPositionZ + (initVelocityZ * velocityReducer * accelerationTime");
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " distance traveled = " + (this.transform.position.z - initPositionZ));
+
+                            Debug.Log("Dash Frame: " + currentDashFrame + " initial velocity = " + initVelocityZ);
+
+                            //  Debug.Log("Dash Frame: " + currentDashFrame + " adjusted velocity = " + (initVelocityZ * velocityReducer * accelerationTime * 0.1f));
+                        }
+                    }
+
+                    else if (currentDashFrame >= maxDashFrames)
+                        resetDashParameters();
+
+                    //else if (accelerationTime >= maxDashTime)
+                    //resetDashParameters();
+                }
+
+                #endregion
+
+                #region Check Jumping and Falling States
 
                 if (!isJumping)
                 {
-                    if (!isFalling)
+                    if (!isGrounded)
                     {
-                        fall();
+                        if (groundCheck())
+                        {
+                            land();
 
-                        ac.setFalling(isFalling);
+                            ac.setFalling(isFalling);
+                            ac.setJumping(isJumping);
+                        }
+
+                        if (!groundCheck() && !isJumping)
+                        {
+                            if (!isFalling)
+                            {
+                                fall();
+
+                                ac.setFalling(isFalling);
+                            }
+                        }
                     }
                 }
-            }
-        }
 
-        #endregion
+                else
+                {
+                    currentJumpTime += Time.deltaTime;
 
-        #region Apply Gravity
+                    if (currentJumpTime >= maxJumpTime)
+                        JumpEnd();
+                }
 
-        /*
-        if (isJumping)
-        {
-            isFalling = false;
+                #endregion
 
-            if (jumpDebug)
-                Debug.Log("isJumping true");
-            
-            if (currentJumpPower < maxJumpPower)
-            {
+                #region Apply Gravity
+
+                /*
+                if (isJumping)
+                {
+                    isFalling = false;
+
+                    if (jumpDebug)
+                        Debug.Log("isJumping true");
+
+                    if (currentJumpPower < maxJumpPower)
+                    {
+                        if (jumpDebug)
+                            Debug.Log("jumpPower increased");
+                        currentJumpPower++;
+                    }
+
+                    else if (currentJumpPower >= maxJumpPower)
+                    {
+                        if (jumpDebug)
+                            Debug.Log("reached maxJumpPower");
+                        JumpEnd();
+                    }
+
+
+                    if (jumpDebug)
+                        Debug.Log("Jump force applied by JumpPower");
+
+                 //   vSpeed += maxJumpPower * Time.deltaTime;// * jumpAmplifier;
+
+                    if (jumpDebug)
+                        Debug.Log("vSpeed = " + vSpeed);
+                }
+            */
+
+                if (!isGrounded && !isJumping)
+                    isFalling = true;
+
+                if (isFalling)
+                {
+                    if (jumpDebug)
+                        Debug.Log("isFalling = true");
+
+                    vSpeed -= gravity * Time.deltaTime;
+
+                    if (jumpDebug)
+                    {
+                        Debug.Log("vSpeed reduced by gravity");
+                        Debug.Log("vSpeed = " + vSpeed);
+                    }
+                }
+
+                moveDirection.y = vSpeed;
+
+                if (!dashRequested)
+                    if (controller)
+                        controller.Move(moveDirection * Time.deltaTime * currentSpeed);
+
+                    else
+                        Debug.LogError("controller not assigned!");
+
+                Debug.Log("moved controller by " + moveDirection * Time.deltaTime * currentSpeed);
+                Debug.Log("moveDirection = " + moveDirection);
+
+                #endregion
+
+                #region Debug
+
                 if (jumpDebug)
-                    Debug.Log("jumpPower increased");
-                currentJumpPower++;
-            }
+                {
+                    Debug.Log("jumpDebug: isGrounded =" + isGrounded);
 
-            else if (currentJumpPower >= maxJumpPower)
-            {
-                if (jumpDebug)
-                    Debug.Log("reached maxJumpPower");
-                JumpEnd();
-            }
-            
+                    Debug.Log("jumpDebug: isFalling =" + isFalling);
 
-            if (jumpDebug)
-                Debug.Log("Jump force applied by JumpPower");
+                    Debug.Log("jumpDebug: isJumping =" + isJumping);
 
-         //   vSpeed += maxJumpPower * Time.deltaTime;// * jumpAmplifier;
+                    Debug.Log("Player transform position = " + Player.transform.position);
 
-            if (jumpDebug)
-                Debug.Log("vSpeed = " + vSpeed);
-        }
-    */
+                    try
+                    {
+                        Debug.Log("Model transform position = " + Player.GetChild(7).position);
+                    }
 
-        if (!isGrounded && !isJumping)
-            isFalling = true;
+                    catch (MissingReferenceException e)
+                    {
+                        Debug.LogError(e.Message);
+                    }
+                }
 
-        if (isFalling)
-        {
-            if (jumpDebug)
-                Debug.Log("isFalling = true");
-
-            vSpeed -= gravity * Time.deltaTime;
-
-            if (jumpDebug)
-            {
-                Debug.Log("vSpeed reduced by gravity");
-                Debug.Log("vSpeed = " + vSpeed);
+                #endregion
             }
         }
-
-        moveDirection.y = vSpeed;
-
-        if(!dashRequested)
-        if (controller)
-            controller.Move(moveDirection * Time.deltaTime * currentSpeed);
-
-        else
-            Debug.LogError("controller not assigned!");
-
-        Debug.Log("moved controller by " + moveDirection * Time.deltaTime * currentSpeed);
-        Debug.Log("moveDirection = " + moveDirection);
-
-        #endregion
-
-        #region Debug
-
-        if (jumpDebug)
-        {
-            Debug.Log("jumpDebug: isGrounded =" + isGrounded);
-
-            Debug.Log("jumpDebug: isFalling =" + isFalling);
-
-            Debug.Log("jumpDebug: isJumping =" + isJumping);
-
-            Debug.Log("Player transform position = " + Player.transform.position);
-
-            try
-            {
-                Debug.Log("Model transform position = " + Player.GetChild(7).position);
-            }
-
-            catch (MissingReferenceException e)
-            {
-                Debug.LogError(e.Message);
-            }
-        }
-
-        #endregion
     }
 
     // Update is called once per frame
@@ -473,9 +562,18 @@ public class InputControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        CamControl();
+        if (!endGame)
+        {
+            CamControl();
+        }
+        else
+        {
+            cc.vCam3.Priority = 10;
+            movementSpeed = 0;
+            currentSpeed = 0;
+        }
+        
         // changeDirection();
-        resetMovement();
 
         if (!isJumping && isFalling && isGrounded)
             land();
@@ -572,19 +670,16 @@ public class InputControl : MonoBehaviour
         }
     }
 
-    void resetMovement()
+    public void resetMovement()
     {
+        inputVec = Vector2.zero;
 
+        mouseVec = Vector2.zero;
+
+        isJumping = false;
+
+        dashRequested = false;
     }
-
-    /*
-     Godmode - G, Select
-     Killswitch - K
-     Helped with bearicade
-     Tried to help with github issue
-     Fixed jump
-     Fixed grounding raycast
-    */
 
     void OnPause()
     {
@@ -650,7 +745,7 @@ public class InputControl : MonoBehaviour
         }
     }
 
-    /*
+    
     public void OnJumpEnd()
     {
         if (jumpDebug)
@@ -658,7 +753,7 @@ public class InputControl : MonoBehaviour
 
         JumpEnd();
     }
-    */
+    
 
     public Vector2 getMouseData(Vector2 input)
     {
@@ -1003,44 +1098,60 @@ public class InputControl : MonoBehaviour
         }
 
         #endregion
-        if (!cooldown.isCooldown4)
+
+        if (cm.hasRangedWeapon)
         {
-            #region Debug
-
-            if (inputDebug)
-                Debug.Log("input: Throw not on cooldown");
-
-            #endregion
-
-            if (ib.checkBuffer(ActionItem.InputAction.Ranged))
+            if (!cooldown.isCooldown4)
             {
                 #region Debug
 
                 if (inputDebug)
-                {
-
-                }
+                    Debug.Log("input: Throw not on cooldown");
 
                 #endregion
 
-                if (ib.actionAllowed)
+                if (ib.checkBuffer(ActionItem.InputAction.Ranged))
                 {
                     #region Debug
 
                     if (inputDebug)
-                        Debug.Log("input: action allowed");
+                    {
+
+                    }
 
                     #endregion
 
-                    ib.inputBuffer.Add(new ActionItem(ActionItem.InputAction.Ranged, Time.time));
-                    //cm.AttackEnd();
+                    if (ib.actionAllowed)
+                    {
+                        #region Debug
+
+                        if (inputDebug)
+                            Debug.Log("input: action allowed");
+
+                        #endregion
+
+                        ib.inputBuffer.Add(new ActionItem(ActionItem.InputAction.Ranged, Time.time));
+                        //cm.AttackEnd();
+                    }
+                    else
+                    {
+                        #region Debug
+
+                        if (inputDebug)
+                            Debug.Log("input: action not allowed");
+
+                        #endregion
+                    }
                 }
+
                 else
                 {
                     #region Debug
 
                     if (inputDebug)
-                        Debug.Log("input: action not allowed");
+                    {
+                        Debug.Log("input: not added to input buffer");
+                    }
 
                     #endregion
                 }
@@ -1051,9 +1162,7 @@ public class InputControl : MonoBehaviour
                 #region Debug
 
                 if (inputDebug)
-                {
-                    Debug.Log("input: not added to input buffer");
-                }
+                    Debug.Log("input: Throw is on cooldown");
 
                 #endregion
             }
@@ -1064,7 +1173,7 @@ public class InputControl : MonoBehaviour
             #region Debug
 
             if (inputDebug)
-                Debug.Log("input: Throw is on cooldown");
+                Debug.Log("input: player does not have Ranged attack yet!");
 
             #endregion
         }
@@ -1204,7 +1313,8 @@ public class InputControl : MonoBehaviour
                     potentialGrounds[i].tag == "Picnic Table" ||
                     potentialGrounds[i].tag == "Train Car" ||
                     potentialGrounds[i].tag == "Trash Can" ||
-                    potentialGrounds[i].tag == "Test Of Strength")
+                    potentialGrounds[i].tag == "Test Of Strength" ||
+                    potentialGrounds[i].tag == "Planks")
                 {
                     if (this.transform.parent == potentialGrounds[i].transform)
                         this.transform.parent = null;
@@ -1216,15 +1326,7 @@ public class InputControl : MonoBehaviour
                     this.transform.parent = potentialGrounds[i].transform;
 
                     return true;
-                }
-                //else
-                //{
-                //    if (this.transform.parent == potentialGrounds[i].transform)
-                //        this.transform.parent = null;
-
-                //    return false;
-                //}
-
+                } 
             }
         }
 
@@ -1267,6 +1369,36 @@ public class InputControl : MonoBehaviour
 
     #endregion
 
+    #region Obstacle Check
+
+    bool obstacleCheck(Vector3 pos)
+    {
+        Vector3 lineStart = raycastSpawn.transform.position;
+        Vector3 vectorToSearch = new Vector3(lineStart.x, lineStart.y, lineStart.z + pos.z);
+
+        RaycastHit obstacleHit;
+
+        Debug.DrawLine(lineStart, vectorToSearch, Color.cyan);
+
+        if (Physics.Linecast(lineStart, vectorToSearch, out obstacleHit))
+        {
+            if (obstacleHit.transform.tag == "Fence" ||
+                obstacleHit.transform.tag == "Train Car" ||
+                obstacleHit.transform.tag == "Booth" ||
+                obstacleHit.transform.tag == "Picnic Table")
+            {
+                return false;
+            }
+
+            else
+                return true;
+        }
+
+        else return true;
+    }
+
+    #endregion
+
     #region Collisions 
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -1293,7 +1425,16 @@ public class InputControl : MonoBehaviour
 
         else if (hit.gameObject.tag == "Killbox")
         {
-            cm.kill();
+            respawnPoint = GameManager.Instance.GetCurrentCheckpoint();
+
+            Debug.Log("respawnPoint = " + respawnPoint.transform.name);
+
+            if (respawnPoint)
+                gameObject.transform.position = respawnPoint.transform.position;
+
+            if (ac)
+                ac.respawn();
+            //die();
         }
     }
 
@@ -1320,6 +1461,8 @@ public class InputControl : MonoBehaviour
                 cm.dashEnds();
 
             currentJumpPower = minimumJumpPower;
+
+            currentJumpTime = 0;
 
             isGrounded = false;
 
@@ -1462,6 +1605,11 @@ public class InputControl : MonoBehaviour
             invertX = true;
 
         return invertX;
+    }
+
+    public void freeAction()
+    {
+        ib.setBufferTrue();
     }
 
     #endregion 

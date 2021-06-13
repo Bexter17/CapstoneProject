@@ -65,13 +65,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Fur_Clipping: 0.4
+    - Boolean_F5B12CC4: 1
+    - Fur_Clipping: 0.615
     - Vector1_24FEA3FD: 1
     - Vector1_2D629CFB: 0.05
     - Vector1_312C327: 0.5
     - Vector1_6D839EFA: 1.78
+    - Vector1_751C5E01: 0.7
     - Vector1_77294385: -170
     - Vector1_7F65A3C1: 1.5
+    - Vector1_8DA56086: 0.58
+    - Vector1_AC7556F3: 9.32
     - Vector1_BAD67CD7: 0
     - Vector1_E0ED6056: 0
     - _AlphaClip: 0

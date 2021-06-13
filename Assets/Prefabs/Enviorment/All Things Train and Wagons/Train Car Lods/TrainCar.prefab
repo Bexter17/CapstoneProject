@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5423380564416927088}
   m_Layer: 0
   m_Name: TrainCar
-  m_TagString: Untagged
+  m_TagString: Train Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
